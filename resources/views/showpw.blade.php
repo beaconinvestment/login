@@ -25,7 +25,15 @@
             <div id="notific">
                 @include('notifications')
             </div>
-            {{$passwd}}
+            @if ($passwd  ==  '200')
+                <b>Wrong CNIC Entered</b>
+                <br>
+                Please Try Again?<a href="{{ route('forgot-password') }}"> Click here</a>
+            @else
+                <b>{{$passwd}}</b>
+                <br>
+                Back to login page?<a href="{{ route('login') }}"> Click here</a>
+            @endif
             {{--@if (is_array($users) || is_object($users))--}}
                 {{--@foreach((array)$user as $users)--}}
                     {{--<tbody>--}}
@@ -46,8 +54,7 @@
                     {{--</tbody>--}}
                 {{--</div>--}}
             {{--</form>--}}
-        <br>
-            Back to login page?<a href="{{ route('login') }}"> Click here</a>
+
         </div>
     </div>
 </div>

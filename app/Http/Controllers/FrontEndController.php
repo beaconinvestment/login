@@ -333,11 +333,12 @@ class FrontEndController extends JoshController
         $pw = DB::table('users')->where('cnic','=',$cnic)->first();
 
 
-        $passwd = $pw->pword;
-
-//        $userid = Sentinel::getUser()->id;
-//        print_r($userid);
-//        $userpw = Sentinel::getUser()->password;
+        if ($pw){
+            $passwd = $pw->pword;
+        }
+        else{
+            $passwd = '200';
+        }
 
 
         return view('showpw',compact('passwd'));
