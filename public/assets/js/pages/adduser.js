@@ -64,6 +64,20 @@ $("#commentForm").bootstrapValidator({
                 }
             }
         },
+        pword: {
+            validators: {
+                notEmpty: {
+                    message: 'Confirm Password is required'
+                },
+                identical: {
+                    field: 'password'
+                },
+                different: {
+                    field: 'first_name,last_name',
+                    message: 'Confirm Password should match with password'
+                }
+            }
+        },
         email: {
             validators: {
                 notEmpty: {
@@ -73,6 +87,39 @@ $("#commentForm").bootstrapValidator({
                     message: 'The input is not a valid email address'
                 }
             }
+        },
+        cell_no: {
+            validators: {
+                notEmpty: {
+                    message: 'Cell number required'
+                }, // notEmpty
+                regexp: {
+                    // regexp: /^[1-9][0-9]{0,11}$/,
+                    regexp: /^\d{11}$/,
+                    message: "Invalid Cell Number"
+                }
+            } // validators
+        },  // mobilenum
+        cnic: {
+            validators: {
+                notEmpty: {
+                    message: 'CNIC number required'
+                }, // notEmpty
+                regexp: {
+                    // regexp: /^[1-9][0-9]{0,11}$/,
+                    regexp: /^\d{13}$/,
+                    message: "Invalid CNIC Number"
+                }
+            } // validators
+        },  // mobilenum
+        ref_by: {
+            validators: {
+                notEmpty: {
+                    message: 'Referred by is required'
+                }
+            },
+            required: true,
+            minlength: 3
         },
         bio: {
             validators: {
