@@ -1,94 +1,93 @@
-@extends('layouts/default')
-
-{{-- Page title --}}
-@section('title')
+<?php $__env->startSection('title'); ?>
 Blog
-@parent
-@stop
+##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
+
+<?php $__env->startSection('header_styles'); ?>
     <!--page level css starts-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/tabbular.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/blog.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/frontend/tabbular.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/frontend/blog.css')); ?>">
     <!--end of page level css-->
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- breadcrumb --}}
-@section('top')
+
+<?php $__env->startSection('top'); ?>
     <div class="breadcum">
         <div class="container">
             <ol class="breadcrumb">
                 <li>
-                    <a href="{{ route('home') }}"> <i class="livicon icon3 icon4" data-name="home" data-size="18" data-loop="true" data-c="#3d3d3d" data-hc="#3d3d3d"></i>Dashboard
+                    <a href="<?php echo e(route('home')); ?>"> <i class="livicon icon3 icon4" data-name="home" data-size="18" data-loop="true" data-c="#3d3d3d" data-hc="#3d3d3d"></i>Dashboard
                     </a>
                 </li>
                 <li class="hidden-xs">
                     <i class="livicon icon3" data-name="angle-double-right" data-size="18" data-loop="true" data-c="#01bc8c" data-hc="#01bc8c"></i>
-                    <a href="{{ route('blog') }}">Blog</a>
+                    <a href="<?php echo e(route('blog')); ?>">Blog</a>
                 </li>
             </ol>
             <div class="pull-right">
                 <i class="livicon icon3" data-name="edit" data-size="20" data-loop="true" data-c="#3d3d3d" data-hc="#3d3d3d"></i>
-                <a href="{{ route('blog-account')  }}">Blog</a>
+                <a href="<?php echo e(route('blog-account')); ?>">Blog</a>
             </div>
         </div>
     </div>
-    @stop
+    <?php $__env->stopSection(); ?>
 
 
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <!-- Container Section Strat -->
     <div class="container">
         <h2>Blog</h2>
         <div class="row">
             <div class="content">
                 <div class="col-md-8">
-                    @forelse ($blogs as $blog)
+                    <?php $__empty_1 = true; $__currentLoopData = $blogs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <!-- BEGIN FEATURED POST -->
                     <div class="featured-post-wide thumbnail">
-                        @if($blog->image)
-                        <img src="{{ URL::to('/uploads/blog/'.$blog->image)  }}" class="img-responsive" alt="Image">
-                        @endif
+                        <?php if($blog->image): ?>
+                        <img src="<?php echo e(URL::to('/uploads/blog/'.$blog->image)); ?>" class="img-responsive" alt="Image">
+                        <?php endif; ?>
                         <div class="featured-text relative-left">
-                            <h3 class="primary"><a href="{{ URL::to('blogitem/'.$blog->slug) }}">{{$blog->title}}</a></h3>
+                            <h3 class="primary"><a href="<?php echo e(URL::to('blogitem/'.$blog->slug)); ?>"><?php echo e($blog->title); ?></a></h3>
                             <p>
-                                {!! $blog->content !!}
+                                <?php echo $blog->content; ?>
+
                             </p>
                             <p>
                                 <strong>Tags: </strong>
-                                @forelse($blog->tags as $tag)
-                                    <a href="{{ URL::to('blog/'.mb_strtolower($tag).'/tag') }}">{{ $tag }}</a>,
-                                @empty
+                                <?php $__empty_2 = true; $__currentLoopData = $blog->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_2 = false; ?>
+                                    <a href="<?php echo e(URL::to('blog/'.mb_strtolower($tag).'/tag')); ?>"><?php echo e($tag); ?></a>,
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_2): ?>
                                     No Tags
-                                @endforelse
+                                <?php endif; ?>
                             </p>
                             <p class="additional-post-wrap">
                                 <span class="additional-post">
-                                    <i class="livicon" data-name="user" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i> by&nbsp;<a href="#">{{$blog->author->first_name . ' ' . $blog->author->last_name}}</a>
+                                    <i class="livicon" data-name="user" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i> by&nbsp;<a href="#"><?php echo e($blog->author->first_name . ' ' . $blog->author->last_name); ?></a>
                                 </span>
                                 <span class="additional-post">
-                                    <i class="livicon" data-name="clock" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i><a href="#"> {{$blog->created_at->diffForHumans()}}</a>
+                                    <i class="livicon" data-name="clock" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i><a href="#"> <?php echo e($blog->created_at->diffForHumans()); ?></a>
                                 </span>
                                 <span class="additional-post">
-                                    <i class="livicon" data-name="comment" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i><a href="#"> {{$blog->comments->count()}} comments</a>
+                                    <i class="livicon" data-name="comment" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i><a href="#"> <?php echo e($blog->comments->count()); ?> comments</a>
                                 </span>
                             </p>
                             <hr>
                             <p class="text-right">
-                                <a href="{{ URL::to('blogitem/'.$blog->slug) }}" class="btn btn-primary text-white">Read more</a>
+                                <a href="<?php echo e(URL::to('blogitem/'.$blog->slug)); ?>" class="btn btn-primary text-white">Read more</a>
                             </p>
                         </div>
                         <!-- /.featured-text -->
                     </div>
                     <!-- /.featured-post-wide -->
                     <!-- END FEATURED POST -->
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <h3>No Posts Exists!</h3>
-                    @endforelse
+                    <?php endif; ?>
                     <ul class="pager">
-                        {!! $blogs->render() !!}
+                        <?php echo $blogs->render(); ?>
+
                     </ul>
                 </div>
                 <!-- /.col-md-8 -->
@@ -117,7 +116,7 @@ Blog
                                     <div class="media">
                                         <div class="media-left tab col-sm-6 col-md-12 col-xs-12">
                                             <a href="#">
-                                                <img class="media-object img-responsive" src="{{ asset('assets/images/img_3.jpg') }}" alt="image">
+                                                <img class="media-object img-responsive" src="<?php echo e(asset('assets/images/img_3.jpg')); ?>" alt="image">
                                             </a>
                                         </div>
                                     </div>
@@ -130,7 +129,7 @@ Blog
                                     <div class="media">
                                         <div class="media-left tab col-sm-6 col-md-12 col-xs-12">
                                             <a href="#">
-                                                <img class="media-object img-responsive" src="{{ asset('assets/images/img_5.jpg') }}" alt="image">
+                                                <img class="media-object img-responsive" src="<?php echo e(asset('assets/images/img_5.jpg')); ?>" alt="image">
                                             </a>
                                         </div>
                                     </div>
@@ -145,7 +144,7 @@ Blog
                                     <div class="media">
                                         <div class="media-left media-middle tab col-sm-12 col-xs-12">
                                             <a href="#">
-                                                <img class="media-object img-responsive" src="{{ asset('assets/images/img_5.jpg') }}" alt="image">
+                                                <img class="media-object img-responsive" src="<?php echo e(asset('assets/images/img_5.jpg')); ?>" alt="image">
                                             </a>
                                         </div>
                                     </div>
@@ -158,7 +157,7 @@ Blog
                                     <div class="media">
                                         <div class="media-left tab col-sm-6 col-md-12 col-xs-12">
                                             <a href="#">
-                                                <img class="media-object img-responsive" src="{{ asset('assets/images/img_3.jpg') }}" alt="image">
+                                                <img class="media-object img-responsive" src="<?php echo e(asset('assets/images/img_3.jpg')); ?>" alt="image">
                                             </a>
                                         </div>
                                     </div>
@@ -180,7 +179,7 @@ Blog
                         <ul class="media-list media-xs media-dotted">
                             <li class="media">
                                 <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
+                                    <img src="<?php echo e(asset('assets/images/authors/avatar.jpg')); ?>" class="img-circle img-responsive pull-left" alt="riot">
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading primary">
@@ -197,7 +196,7 @@ Blog
                             <hr>
                             <li class="media">
                                 <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar1.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
+                                    <img src="<?php echo e(asset('assets/images/authors/avatar1.jpg')); ?>" class="img-circle img-responsive pull-left" alt="riot">
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading primary">
@@ -214,7 +213,7 @@ Blog
                             <hr>
                             <li class="media">
                                 <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar5.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
+                                    <img src="<?php echo e(asset('assets/images/authors/avatar5.jpg')); ?>" class="img-circle img-responsive pull-left" alt="riot">
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading primary">
@@ -233,11 +232,11 @@ Blog
                     <div class="thumbnail">
                         <h3>Tags</h3>
                         <div class="primary text-center">
-                            @forelse($tags as $tag)
-                                <a href="{{ URL::to('blog/'.$tag.'/tag') }}">{{ $tag }}</a>,
-                            @empty
+                            <?php $__empty_1 = true; $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                <a href="<?php echo e(URL::to('blog/'.$tag.'/tag')); ?>"><?php echo e($tag); ?></a>,
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                 No Tags
-                            @endforelse
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -246,9 +245,11 @@ Blog
         </div>
     </div>
     
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- page level scripts --}}
-@section('footer_scripts')
 
-@stop
+<?php $__env->startSection('footer_scripts'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts/default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

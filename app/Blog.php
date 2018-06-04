@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Blog extends Model {
 
     use SoftDeletes;
-
     use Sluggable;
     use SluggableScopeHelpers;
     use Taggable;

@@ -38,7 +38,6 @@ Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
 //    Route::get('{provider}/callback', 'AuthController@handleProviderCallback');
 
 
-
     # Register2
     Route::get('register2', function () {
         return view('admin/register2');
@@ -229,8 +228,10 @@ Route::get('forgot-password/{userId}/{passwordResetCode}', 'FrontEndController@g
 Route::group(['middleware' => 'user'], function () {
     Route::put('my-account', 'FrontEndController@update');
     Route::get('my-account', 'FrontEndController@myAccount')->name('my-account');
+    Route::get('blog-account', 'other\BlogController@create')->name('blog-account');
     Route::get('my-account/get_payments', 'FrontEndController@get_Ajax');
 });
+
 Route::get('logout', 'FrontEndController@getLogout')->name('logout');
 # contact form
 Route::post('contact', 'FrontEndController@postContact')->name('contact');

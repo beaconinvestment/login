@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
 //        $this->call(DatatablesSeeder::class);
 //        $this->call(CountrySeeder::class);
 //
-        DB::table('booking')->insert([
+        DB::table('bookings')->insert([
 
             'user_id' => '1',
             'type' => 'residential',
@@ -27,9 +27,6 @@ class DatabaseSeeder extends Seeder
             'installment_amount' => '90000',
             'society' => 'CapitalSmartCity',
             'confirmation_after' => '3'
-
-
-
         ]);
     }
 }

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login | Welcome to Beacon Investment Frontend</title>
+    <title>Login | Welcome to Beacon Frontend</title>
     <!--global css starts-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
@@ -52,7 +52,7 @@
 
                     </div>
                     <input type="submit" class="btn btn-block btn-primary" value="Log In">
-                    Don't have an account? <a href="{{ route('register') }}"><strong> Sign Up</strong></a>
+                    Don't have an account? <a href="{{ route('contact') }}"><strong> Contact Us</strong></a>
                 </form>
                 <br/>
                 {{--<div class="text-center">--}}

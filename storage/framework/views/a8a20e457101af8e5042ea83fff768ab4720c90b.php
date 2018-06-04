@@ -1,23 +1,20 @@
-@extends('layouts.default')
-
-{{-- Page title --}}
-@section('title')
+<?php $__env->startSection('title'); ?>
     User Account
-    @parent
-@stop
+    ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
 
-    {{--<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}">--}}
-    {{--<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/minimal/blue.css') }}">--}}
-    {{--<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/select2/css/select2.min.css') }}">--}}
-    {{--<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}">--}}
-    {{--<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">--}}
-    {{--    <link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>--}}
-    {{--<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/user_account.css') }}">--}}
+<?php $__env->startSection('header_styles'); ?>
 
-@stop
+    
+    
+    
+    
+    
+    
+    
+
+<?php $__env->stopSection(); ?>
 <style>
     .full-width{
         display: block !important; /* I added this to see the modal, you don't need this */
@@ -32,8 +29,8 @@
         overflow-y: auto;
     }
 </style>
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <hr class="content-header-sep">
     <div class="container">
         <div class="col-lg-12">
@@ -59,9 +56,9 @@
                                     <div class="col-lg-12">
                                         <div class="panel">
                                             <div class="panel-heading">
-                                                {{--<h3 class="panel-title">--}}
-                                                {{--User Profile--}}
-                                                {{--</h3>--}}
+                                                
+                                                
+                                                
 
                                             </div>
                                             <div class="container">
@@ -72,38 +69,40 @@
                                                             <div class="position-center">
                                                                 <!-- Notifications -->
                                                                 <div id="notific">
-                                                                    @include('notifications')
+                                                                    <?php echo $__env->make('notifications', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                                                                 </div>
 
-                                                                {{--<div>--}}
-                                                                    {{--<h3 class="text-primary" id="title">Personal Information </h3>--}}
-                                                                {{--</div>--}}
-                                                                {!! Form::model($user, ['url' => URL::to('my-account'), 'method' => 'put', 'class' => 'form-horizontal','enctype'=>"multipart/form-data"]) !!}
+                                                                
+                                                                    
+                                                                
+                                                                <?php echo Form::model($user, ['url' => URL::to('my-account'), 'method' => 'put', 'class' => 'form-horizontal','enctype'=>"multipart/form-data"]); ?>
 
-                                                                {{ csrf_field() }}
-                                                                <div class="form-group {{ $errors->first('pic', 'has-error') }}">
+
+                                                                <?php echo e(csrf_field()); ?>
+
+                                                                <div class="form-group <?php echo e($errors->first('pic', 'has-error')); ?>">
                                                                     <label class="col-md-2 control-label">Avatar:</label>
                                                                     <div class="col-md-10">
                                                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                             <div class="fileinput-new thumbnail" style="max-width: 200px; max-height: 200px;">
-                                                                                @if($user->pic)
-                                                                                    @if((substr($user->pic, 0,5)) == 'https')
-                                                                                        <img src="{{ $user->pic }}" alt="img"
+                                                                                <?php if($user->pic): ?>
+                                                                                    <?php if((substr($user->pic, 0,5)) == 'https'): ?>
+                                                                                        <img src="<?php echo e($user->pic); ?>" alt="img"
                                                                                              class="img-responsive"/>
-                                                                                    @else
-                                                                                        <img src="{!! url('/').'/uploads/users/'.$user->pic !!}" alt="img"
+                                                                                    <?php else: ?>
+                                                                                        <img src="<?php echo url('/').'/uploads/users/'.$user->pic; ?>" alt="img"
                                                                                              class="img-responsive"/>
-                                                                                    @endif
-                                                                                @elseif($user->gender === "male")
-                                                                                    <img src="{{ asset('assets/images/authors/avatar3.png') }}" alt="..."
+                                                                                    <?php endif; ?>
+                                                                                <?php elseif($user->gender === "male"): ?>
+                                                                                    <img src="<?php echo e(asset('assets/images/authors/avatar3.png')); ?>" alt="..."
                                                                                          class="img-responsive"/>
-                                                                                @elseif($user->gender === "female")
-                                                                                    <img src="{{ asset('assets/images/authors/avatar5.png') }}" alt="..."
+                                                                                <?php elseif($user->gender === "female"): ?>
+                                                                                    <img src="<?php echo e(asset('assets/images/authors/avatar5.png')); ?>" alt="..."
                                                                                          class="img-responsive"/>
-                                                                                @else
-                                                                                    <img src="{{ asset('assets/images/authors/no_avatar.jpg') }}" alt="..."
+                                                                                <?php else: ?>
+                                                                                    <img src="<?php echo e(asset('assets/images/authors/no_avatar.jpg')); ?>" alt="..."
                                                                                          class="img-responsive"/>
-                                                                                @endif
+                                                                                <?php endif; ?>
                                                                             </div>
                                                                             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                                                                             <div>
@@ -115,10 +114,10 @@
                                                                                 <span class="btn btn-primary fileinput-exists" data-dismiss="fileinput">Remove</span>
                                                                             </div>
                                                                         </div>
-                                                                        <span class="help-block">{{ $errors->first('pic', ':message') }}</span>
+                                                                        <span class="help-block"><?php echo e($errors->first('pic', ':message')); ?></span>
                                                                     </div>
                                                                 </div>
-                                                                <div class="form-group {{ $errors->first('first_name', 'has-error') }}">
+                                                                <div class="form-group <?php echo e($errors->first('first_name', 'has-error')); ?>">
                                                                     <label class="col-lg-2 control-label">
                                                                         First Name:
                                                                         <span class='require'>*</span>
@@ -129,14 +128,14 @@
                                                                                 <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
                                                                             </span>
                                                                             <input type="text" placeholder=" " name="first_name" id="uf-name"
-                                                                                   class="form-control" value="{!! old('first_name',$user->first_name) !!}">
+                                                                                   class="form-control" value="<?php echo old('first_name',$user->first_name); ?>">
                                                                         </div>
-                                                                        <span class="help-block">{{ $errors->first('first_name', ':message') }}</span>
+                                                                        <span class="help-block"><?php echo e($errors->first('first_name', ':message')); ?></span>
                                                                     </div>
 
                                                                 </div>
 
-                                                                <div class="form-group {{ $errors->first('last_name', 'has-error') }}">
+                                                                <div class="form-group <?php echo e($errors->first('last_name', 'has-error')); ?>">
                                                                     <label class="col-lg-2 control-label">
                                                                         Last Name:
                                                                         <span class='require'>*</span>
@@ -148,12 +147,12 @@
                                                                             </span>
                                                                             <input type="text" placeholder=" " name="last_name" id="ul-name"
                                                                                    class="form-control"
-                                                                                   value="{!! old('last_name',$user->last_name) !!}"></div>
-                                                                        <span class="help-block">{{ $errors->first('last_name', ':message') }}</span>
+                                                                                   value="<?php echo old('last_name',$user->last_name); ?>"></div>
+                                                                        <span class="help-block"><?php echo e($errors->first('last_name', ':message')); ?></span>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="form-group {{ $errors->first('email', 'has-error') }}">
+                                                                <div class="form-group <?php echo e($errors->first('email', 'has-error')); ?>">
                                                                     <label class="col-lg-2 control-label">
                                                                         Email:
                                                                         <span class='require'>*</span>
@@ -164,13 +163,13 @@
                                                                                 <i class="livicon" data-name="mail" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
                                                                             </span>
                                                                             <input type="text" placeholder=" " id="email" name="email" class="form-control"
-                                                                                   value="{!! old('email',$user->email) !!}"></div>
-                                                                        <span class="help-block">{{ $errors->first('email', ':message') }}</span>
+                                                                                   value="<?php echo old('email',$user->email); ?>"></div>
+                                                                        <span class="help-block"><?php echo e($errors->first('email', ':message')); ?></span>
                                                                     </div>
 
                                                                 </div>
 
-                                                                <div class="form-group {{ $errors->first('cnic', 'has-error') }}">
+                                                                <div class="form-group <?php echo e($errors->first('cnic', 'has-error')); ?>">
                                                                     <label class="col-lg-2 control-label">
                                                                         CNIC:
                                                                         <span class='require'>*</span>
@@ -181,13 +180,13 @@
                                                                                 <i class="livicon" data-name="pencil" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
                                                                             </span>
                                                                             <input type="text" placeholder="00000-0000000-0" id="cnic" name="cnic" class="form-control"
-                                                                                   value="{!! old('cnic',$user->cnic) !!}"></div>
-                                                                        <span class="help-block">{{ $errors->first('cnic', ':message') }}</span>
+                                                                                   value="<?php echo old('cnic',$user->cnic); ?>"></div>
+                                                                        <span class="help-block"><?php echo e($errors->first('cnic', ':message')); ?></span>
                                                                     </div>
 
                                                                 </div>
 
-                                                                <div class="form-group {{ $errors->first('cell_no', 'has-error') }}">
+                                                                <div class="form-group <?php echo e($errors->first('cell_no', 'has-error')); ?>">
                                                                     <label class="col-lg-2 control-label">
                                                                         Cell No:
                                                                         <span class='require'>*</span>
@@ -198,12 +197,12 @@
                                                                                 <i class="livicon" data-name="phone" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
                                                                             </span>
                                                                             <input type="text" placeholder="Cell No" id="cell_no" name="cell_no" class="form-control"
-                                                                                   value="{!! old('cell_no',$user->cell_no) !!}"></div>
-                                                                        <span class="help-block">{{ $errors->first('cell_no', ':message') }}</span>
+                                                                                   value="<?php echo old('cell_no',$user->cell_no); ?>"></div>
+                                                                        <span class="help-block"><?php echo e($errors->first('cell_no', ':message')); ?></span>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="form-group {{ $errors->first('dob', 'has-error') }}">
+                                                                <div class="form-group <?php echo e($errors->first('dob', 'has-error')); ?>">
                                                                     <label class="col-lg-2 control-label">
                                                                         DOB:
                                                                     </label>
@@ -212,35 +211,37 @@
                                                                             <span class="input-group-addon">
                                                                                 <i class="livicon" data-name="calendar" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
                                                                             </span>
-                                                                            @if($user->dob === '')
-                                                                                {!!  Form::text('dob', null, array('id' => 'datepicker','class' => 'form-control'))  !!}
-                                                                            @else
-                                                                                {!!  Form::text('dob', old('dob',$user->dob), array('id' => 'datepicker','class' => 'form-control', 'data-date-format'=> 'YYYY-MM-DD'))  !!}
-                                                                            @endif
+                                                                            <?php if($user->dob === ''): ?>
+                                                                                <?php echo Form::text('dob', null, array('id' => 'datepicker','class' => 'form-control')); ?>
+
+                                                                            <?php else: ?>
+                                                                                <?php echo Form::text('dob', old('dob',$user->dob), array('id' => 'datepicker','class' => 'form-control', 'data-date-format'=> 'YYYY-MM-DD')); ?>
+
+                                                                            <?php endif; ?>
                                                                         </div>
-                                                                        <span class="help-block">{{ $errors->first('dob', ':message') }}</span>
+                                                                        <span class="help-block"><?php echo e($errors->first('dob', ':message')); ?></span>
                                                                     </div>
                                                                 </div>
 
-                                                                {{--<div class="form-group">--}}
-                                                                    {{--<label class="col-lg-2 control-label">Gender: </label>--}}
-                                                                    {{--<div class="col-lg-6">--}}
-                                                                        {{--<div class="radio">--}}
-                                                                            {{--<label>--}}
-                                                                                {{--<input type="radio" name="gender" value="male" @if($user->gender === "male") checked="checked" @endif />--}}
-                                                                                {{--Male--}}
-                                                                            {{--</label>--}}
-                                                                        {{--</div>--}}
-                                                                        {{--<div class="radio">--}}
-                                                                            {{--<label>--}}
-                                                                                {{--<input type="radio" name="gender" value="female" @if($user->gender === "female") checked="checked" @endif />--}}
-                                                                                {{--Female--}}
-                                                                            {{--</label>--}}
-                                                                        {{--</div>--}}
-                                                                    {{--</div>--}}
-                                                                {{--</div>--}}
+                                                                
+                                                                    
+                                                                    
+                                                                        
+                                                                            
+                                                                                
+                                                                                
+                                                                            
+                                                                        
+                                                                        
+                                                                            
+                                                                                
+                                                                                
+                                                                            
+                                                                        
+                                                                    
+                                                                
 
-                                                                <div class="form-group {{ $errors->first('city', 'has-error') }}">
+                                                                <div class="form-group <?php echo e($errors->first('city', 'has-error')); ?>">
                                                                     <label class="col-lg-2 control-label" for="city">City:</label>
                                                                     <div class="col-lg-6">
                                                                         <div class="input-group">
@@ -248,10 +249,10 @@
                                                                                 <i class="livicon" data-name="plus-alt" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
                                                                             </span>
                                                                             <input type="text" placeholder=" " id="city" class="form-control" name="city"
-                                                                                   value="{!! old('city',$user->city) !!}"/>
+                                                                                   value="<?php echo old('city',$user->city); ?>"/>
                                                                         </div>
                                                                     </div>
-                                                                    <span class="help-block">{{ $errors->first('city', ':message') }}</span>
+                                                                    <span class="help-block"><?php echo e($errors->first('city', ':message')); ?></span>
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -260,7 +261,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                </form>{{--{!!  Form::close()  !!}--}}
+                                                                </form>
 
                                                             </div>
                                                         </div>
@@ -271,7 +272,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{--Start of Booking tab--}}
+                            
                             <div id="tab2" class="tab-pane fade">
                                 <div class="row">
                                     <div class="col-md-12 pd-top">
@@ -296,24 +297,24 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($books->booking as $index =>$book)
+                                                    <?php $__currentLoopData = $books->booking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index =>$book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <tr>
-                                                            <td>{{$index+1}}</td>
-                                                            <td>{{$book->society}}</td>
-                                                            <td>{{$book->size}}</td>
-                                                            <td>{{$book->total_price}}</td>
-                                                            <td>{{$book->booking_date}}</td>
+                                                            <td><?php echo e($index+1); ?></td>
+                                                            <td><?php echo e($book->society); ?></td>
+                                                            <td><?php echo e($book->size); ?></td>
+                                                            <td><?php echo e($book->total_price); ?></td>
+                                                            <td><?php echo e($book->booking_date); ?></td>
                                                             <td>
                                                                 <button class="btn btn-block btn-primary " data-toggle="modal" data-href="#full-width"
-                                                                        href="#full-width" onclick="showdetail({{$book->id}})" style="background-color: #224777">
+                                                                        href="#full-width" onclick="showdetail(<?php echo e($book->id); ?>)" style="background-color: #224777">
                                                                     View Payments Schedule
                                                                 </button>
 
-                                                                {{--<a class="btn btn-primary btn-info btn-large" data-toggle="modal"--}}
-                                                                {{--data-href="#full-width" href="#full-width">View</a>--}}
+                                                                
+                                                                
                                                             </td>
                                                         </tr>
-                                                    @endforeach
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -322,12 +323,12 @@
 
                                 </div>
                             </div>
-                            {{--End of Booking tab --}}
+                            
                         </div>
                     </div>
                 </div>
         </div>
-        {{--Start of Payment Schedule Model--}}
+        
         <div class="modal fade in" id="full-width" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -351,31 +352,31 @@
                             </table>
                             <table class="table table-striped" id="table2"  style="font-size: 90%">
 
-                                {{--<thead>--}}
-                                {{--<tr>--}}
-                                {{--<th style="width: 8%">Sr. No.</th>--}}
-                                {{--<th>Due Date</th>--}}
-                                {{--<th>Installment Amount</th>--}}
-                                {{--<th>Paid</th>--}}
-                                {{--<th>Balance</th>--}}
-                                {{--<th>Payment Date</th>--}}
-                                {{--</tr>--}}
-                                {{--</thead>--}}
-                                {{--<tbody class="table-hover">--}}
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
 
-                                {{--</tbody>--}}
+                                
                             </table>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
-                        {{--<button type="button" class="btn btn-primary">Save changes</button>--}}
+                        
                     </div>
                 </div>
             </div>
         </div>
-        {{--End of Payment Schedule Model--}}
-        {{--</section>--}}
+        
+        
 
         <script>
 
@@ -394,12 +395,12 @@
                     var ins_amount = var1[6];
                     // alert(ins_amount);
                     // console.log(JSON.stringify(var2))
-                    {{--var b_date = {!! json_encode($b_date) !!};--}}
-                    {{--var t_row = {!! json_encode($t_rows) !!};--}}
-                    {{--var i_amounts = {!! json_encode($i_amount) !!};--}}
-                    {{--var payments = {!! json_encode($payments) !!};--}}
-                    {{--var p_date = {!! json_encode($p_date) !!};--}}
-                    {{--var confirm_after = {!! json_encode($confirm_after) !!};--}}
+                    
+                    
+                    
+                    
+                    
+                    
 
 
                     //Date Function start
@@ -499,7 +500,7 @@
 
 
                     // Table Generator
-                            {{--var t_row = {!! ($t_rows) !!};--}}
+                            
                     for (var p = 0; p<t_row; p++){
                         var array = [[[p+1],month_array[p],amount_array[p],payments_array[p],balance_array[p],pay_data_array[p]]],
                             table = document.getElementById("table2");
@@ -521,15 +522,16 @@
         </script>
     </div>
 
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('footer_scripts')
+<?php $__env->startSection('footer_scripts'); ?>
 
-    {{--<script type="text/javascript" src="{{ asset('assets/vendors/moment/js/moment.min.js') }}"></script>--}}
-    {{--<script type="text/javascript" src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"></script>--}}
-    {{--<script type="text/javascript" src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>--}}
-    {{--<script type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>--}}
-    {{--<script type="text/javascript" src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>--}}
-    {{--<script type="text/javascript" src="{{ asset('assets/js/frontend/user_account.js') }}"></script>--}}
+    
+    
+    
+    
+    
+    
 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

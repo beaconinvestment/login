@@ -144,6 +144,15 @@ class FrontEndController extends JoshController
         return view('user_account', compact('user','books' ,'countries'));
     }
 
+    public function blogAccount(User $user)
+    {
+        $user = Sentinel::getUser();
+        $userid = Sentinel::getUser()->id;
+        $countries = $this->countries;
+        $books = User::find($userid);
+        return view('user_account', compact('user','books' ,'countries'));
+    }
+
     public function get_Ajax(Request $request)
     {
         $b_id = $request->input('b_id');

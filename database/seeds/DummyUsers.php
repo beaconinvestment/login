@@ -1,4 +1,4 @@
-<?php
+php<?php
 
 use Faker\Factory;
 use App\User;
@@ -23,5 +23,4 @@ class DummyUsers extends DatabaseSeeder {
             $user->roles()->attach(Sentinel::findRoleById(rand(1,2)));
         }
     }
-
 }
