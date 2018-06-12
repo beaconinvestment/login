@@ -49,7 +49,6 @@
                                     <i class="livicon" data-name="notebook" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
                                     Bookings</a>
                             </li>
-
                         </ul>
                         <div  class="tab-content mar-top">
                             <div id="tab1" class="tab-pane fade active in">

@@ -52,7 +52,7 @@
 
                     </div>
                     <input type="submit" class="btn btn-block btn-primary" value="Log In">
-                    Don't have an account? <a href="<?php echo e(route('register')); ?>"><strong> Sign Up</strong></a>
+                    Don't have an account? <a href="<?php echo e(route('contact')); ?>"><strong> Contact Us</strong></a>
                 </form>
                 <br/>
                 
