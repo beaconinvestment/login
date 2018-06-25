@@ -310,7 +310,7 @@
                                 <a href="tel:" class="text-black">+92 (333) 972-2217</a>
                             </a>
                             <a href="#">
-                                <a href="tel:" class="text-black">beacon.tariqmalik@gmail.com</a>
+                                <a href="mailto:" class="text-black">beacon.tariqmalik@gmail.com</a>
                             </a>
                         </div>
                     </div>
@@ -328,7 +328,7 @@
                                 <a href="tel:" class="text-black">+92 (331) 995-5066</a>
                             </a>
                             <a href="#">
-                                <a href="tel:" class="text-black">beacon.shahidmehmood@gmail.com</a>
+                                <a href="mailto:" class="text-black">beacon.shahidmehmood@gmail.com</a>
                             </a>
                         </div>
                     </div>
@@ -346,7 +346,7 @@
                                 <a href="tel:" class="text-black">+92 (334) 505-4117</a>
                             </a>
                             <a href="#">
-                                <a href="tel:" class="text-black">beacon.sehbantariq@gmail.com</a>
+                                <a href="mailto:" class="text-black">beacon.sehbantariq@gmail.com</a>
                             </a>
                         </div>
                     </div>
@@ -364,7 +364,7 @@
                                 <a href="tel:" class="text-black">+92 (333) 973-3317</a>
                             </a>
                             <a href="#">
-                                <a href="tel:" class="text-black">zaintariq163@gmail.com</a>
+                                <a href="mailto:" class="text-black">zaintariq163@gmail.com</a>
                             </a>
                         </div>
                     </div>
