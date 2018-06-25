@@ -21,6 +21,7 @@ class Booking extends Model
 
     public $fillable = [
         'user_id',
+        'booking_code',
         'type',
         'block',
         'total_price',
@@ -51,6 +52,7 @@ class Booking extends Model
      */
     public static $rules = [
         'user_id' => 'required|integer',
+        'booking_code' => 'required',
         'total_price' => 'required|integer',
         'size' => 'required',
         'booking_date' => 'required|date',

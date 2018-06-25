@@ -4,6 +4,12 @@
     {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Booking Code Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('booking_code', 'Booking Code:') !!}
+    {!! Form::text('booking_code', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Type Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('type', 'Type:') !!}

@@ -12,6 +12,13 @@
     <hr>
 </div>
 
+<!-- Booking Code Field -->
+<div class="form-group">
+    {!! Form::label('booking_code', 'Booking Code:') !!}
+    <p>{!! $booking->booking_code !!}</p>
+    <hr>
+</div>
+
 <!-- Type Field -->
 <div class="form-group">
     {!! Form::label('type', 'Type:') !!}

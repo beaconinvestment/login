@@ -3,6 +3,7 @@
      <tr>
         <th>ID</th>
         <th>User ID</th>
+        <th>Booking Code</th>
         <th>Type</th>
         <th>Block</th>
         <th>Total Price</th>
@@ -10,8 +11,8 @@
         <th>Booking Date</th>
         <th>Total Installments</th>
         <th>Installment Amount</th>
-        <th>Society</th>
-        <th>Confirmation After</th>
+        {{--<th>Society</th>--}}
+        <th>Confirm After</th>
         <th >Action</th>
      </tr>
     </thead>
@@ -20,6 +21,7 @@
         <tr>
             <td>{!! $booking->id !!}</td>
             <td>{!! $booking->user_id !!}</td>
+            <td>{!! $booking->booking_code !!}</td>
             <td>{!! $booking->type !!}</td>
             <td>{!! $booking->block !!}</td>
             <td>{!! $booking->total_price !!}</td>
@@ -27,7 +29,7 @@
             <td>{!! $booking->booking_date !!}</td>
             <td>{!! $booking->total_installments !!}</td>
             <td>{!! $booking->installment_amount !!}</td>
-            <td>{!! $booking->society !!}</td>
+            {{--<td>{!! $booking->society !!}</td>--}}
             <td>{!! $booking->confirmation_after !!}</td>
             <td>
                  <a href="{{ route('admin.bookings.show', collect($booking)->first() ) }}">

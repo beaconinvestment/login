@@ -3,6 +3,7 @@
      <tr>
         <th>ID</th>
         <th>User ID</th>
+        <th>Booking Code</th>
         <th>Type</th>
         <th>Block</th>
         <th>Total Price</th>
@@ -10,8 +11,8 @@
         <th>Booking Date</th>
         <th>Total Installments</th>
         <th>Installment Amount</th>
-        <th>Society</th>
-        <th>Confirmation After</th>
+        
+        <th>Confirm After</th>
         <th >Action</th>
      </tr>
     </thead>
@@ -20,6 +21,7 @@
         <tr>
             <td><?php echo $booking->id; ?></td>
             <td><?php echo $booking->user_id; ?></td>
+            <td><?php echo $booking->booking_code; ?></td>
             <td><?php echo $booking->type; ?></td>
             <td><?php echo $booking->block; ?></td>
             <td><?php echo $booking->total_price; ?></td>
@@ -27,7 +29,7 @@
             <td><?php echo $booking->booking_date; ?></td>
             <td><?php echo $booking->total_installments; ?></td>
             <td><?php echo $booking->installment_amount; ?></td>
-            <td><?php echo $booking->society; ?></td>
+            
             <td><?php echo $booking->confirmation_after; ?></td>
             <td>
                  <a href="<?php echo e(route('admin.bookings.show', collect($booking)->first() )); ?>">
