@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'admin' => \App\Http\Middleware\SentinelAdmin::class,
 	    'user' => \App\Http\Middleware\SentinelUser::class,
+	    'blogger' => \App\Http\Middleware\SentinelBlogger::class,
     ];
 }

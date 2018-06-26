@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <title>
         <?php $__env->startSection('title'); ?>
-            | Beacon Admin Template
+            | Josh Admin Template
         <?php echo $__env->yieldSection(); ?>
     </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,10 +24,10 @@
 
     <!-- end of global css -->
     <!--page level css-->
-    <?php echo $__env->yieldContent('header_styles'); ?>
-            <!--end of page level css-->
+<?php echo $__env->yieldContent('header_styles'); ?>
+<!--end of page level css-->
 
-<body class="skin-josh">
+<body class="skin-josh mini_sidebar">
 <header class="header">
     <a href="<?php echo e(route('admin.dashboard')); ?>" class="logo">
         <img src="<?php echo e(asset('assets/img/logo.png')); ?>" alt="logo">
@@ -47,21 +46,21 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <?php if(Sentinel::getUser()->pic): ?>
-                                <img src="<?php echo url('/').'/uploads/users/'.Sentinel::getUser()->pic; ?>" alt="img" height="35px" width="35px"
-                                     class="img-circle img-responsive pull-left"/>
+                            <img src="<?php echo url('/').'/uploads/users/'.Sentinel::getUser()->pic; ?>" alt="img" height="35px" width="35px"
+                                 class="img-circle img-responsive pull-left"/>
 
-                            <?php elseif(Sentinel::getUser()->gender === "male"): ?>
-                                <img src="<?php echo e(asset('assets/images/authors/avatar3.png')); ?>" alt="img" height="35px" width="35px"
-                                     class="img-circle img-responsive pull-left"/>
+                        <?php elseif(Sentinel::getUser()->gender === "male"): ?>
+                            <img src="<?php echo e(asset('assets/images/authors/avatar3.png')); ?>" alt="img" height="35px" width="35px"
+                                 class="img-circle img-responsive pull-left"/>
 
-                            <?php elseif(Sentinel::getUser()->gender === "female"): ?>
-                                <img src="<?php echo e(asset('assets/images/authors/avatar5.png')); ?>" alt="img" height="35px" width="35px"
-                                     class="img-circle img-responsive pull-left"/>
+                        <?php elseif(Sentinel::getUser()->gender === "female"): ?>
+                            <img src="<?php echo e(asset('assets/images/authors/avatar5.png')); ?>" alt="img" height="35px" width="35px"
+                                 class="img-circle img-responsive pull-left"/>
 
-                            <?php else: ?>
-                                <img src="<?php echo e(asset('assets/images/authors/no_avatar.jpg')); ?>" alt="img" height="35px" width="35px"
-                                     class="img-circle img-responsive pull-left"/>
-                            <?php endif; ?>
+                        <?php else: ?>
+                            <img src="<?php echo e(asset('assets/images/authors/no_avatar.jpg')); ?>" alt="img" height="35px" width="35px"
+                                 class="img-circle img-responsive pull-left"/>
+                        <?php endif; ?>
                         <div class="riot">
                             <div>
                                 <p class="user_name_max"><?php echo e(Sentinel::getUser()->first_name); ?> <?php echo e(Sentinel::getUser()->last_name); ?></p>
@@ -115,7 +114,7 @@
                             </div>
                             <div class="pull-right">
                                 <a href="<?php echo e(URL::to('admin/logout')); ?>">
-                                    <i class="livicon" data-name="sign-out" data-s="15"></i>
+                                    <i class="livicon" data-name="sign-out" data-s="18"></i>
                                     Logout
                                 </a>
                             </div>
@@ -161,8 +160,10 @@
                 </div>
                 <div class="clearfix"></div>
                 <!-- BEGIN SIDEBAR MENU -->
-                <?php echo $__env->make('admin.layouts._left_menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                <!-- END SIDEBAR MENU -->
+                <div id="menu" role="navigation">
+                    <?php echo $__env->make('admin.layouts._miniLeftMenu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                </div>
+            <!-- END SIDEBAR MENU -->
             </div>
         </section>
     </aside>
@@ -170,10 +171,10 @@
 
         <!-- Notifications -->
         <div id="notific">
-        <?php echo $__env->make('notifications', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            <?php echo $__env->make('notifications', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
 
-                <!-- Content -->
+        <!-- Content -->
         <?php echo $__env->yieldContent('content'); ?>
 
     </aside>
@@ -188,6 +189,6 @@
 <!-- end of global js -->
 <!-- begin page level js -->
 <?php echo $__env->yieldContent('footer_scripts'); ?>
-        <!-- end page level js -->
+<!-- end page level js -->
 </body>
 </html>

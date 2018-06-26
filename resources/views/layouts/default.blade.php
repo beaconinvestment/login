@@ -142,14 +142,16 @@
                     @if(Sentinel::guest())
                         <li><a href="{{ URL::to('login') }}">Login</a>
                         </li>
-                        <li><a href="{{ URL::to('http://blog.beaconinvestment.org/blog') }}">Blog</a>
+                        {{--<li><a href="{{ URL::to('http://blog.beaconinvestment.org/blog') }}">Blog</a>--}}
+                        <li><a href="{{ URL::to('blog') }}">Blog</a>
                         </li>
                     @else
                         <li {{ (Request::is('my-account') ? 'class=active' : '') }}><a href="{{ URL::to('my-account') }}">My Account</a>
                         </li>
                         <li><a href="{{ URL::to('logout') }}">Logout</a>
                         </li>
-                        <li><a href="{{ URL::to('http://blog.beaconinvestment.org/blog') }}">Blog</a>
+                        {{--<li><a href="{{ URL::to('http://blog.beaconinvestment.org/blog') }}">Blog</a>--}}
+                        <li><a href="{{ URL::to('blog') }}">Blog</a>
                         </li>
                     @endif
                 </ul>

@@ -7,6 +7,7 @@ use App\BlogComment;
 use App\Http\Requests\BlogCommentRequest;
 use Response;
 use Sentinel;
+use DB;
 
 
 class BlogController extends JoshController
@@ -27,7 +28,9 @@ class BlogController extends JoshController
     public function index()
     {
         // Grab all the blogs
-        $blogs = Blog::latest()->paginate(5);
+//        $blogs = Blog::latest()->paginate(5);
+        $blogs = DB::connection("blogdb")->table("blogs")->latest()->paginate(5);
+//        $blogs = DB::connection("blogdb")->table("blogs")->where('slug', $slug)->get();
 
         $tags = $this->tags;
         // Show the page
@@ -42,7 +45,9 @@ class BlogController extends JoshController
     public function getBlog($slug = '')
     {
 
-        $blog = Blog::where('slug', $slug)->first();
+//        $blog = Blog::where('slug', $slug)->first();
+//        $blog = DB::table('blog')->where('slug', $slug)->first();
+        $blog = DB::connection("blogdb")->table("blogs")->where('slug', $slug)->first();
         if ($blog) {
             $blog->increment('views');
         } else {
@@ -59,6 +64,7 @@ class BlogController extends JoshController
     public function getBlogTag($tag)
     {
         $blogs = Blog::withAnyTags($tag)->paginate(5);
+//        $blogs = DB::connection("blogdb")->table("blogs")->withAnyTags($tag)->paginate(5);
         $tags = $this->tags;
         return view('blog', compact('blogs', 'tags'));
     }

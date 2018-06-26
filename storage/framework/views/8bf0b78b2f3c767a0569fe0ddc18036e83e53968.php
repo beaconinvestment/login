@@ -142,14 +142,16 @@
                     <?php if(Sentinel::guest()): ?>
                         <li><a href="<?php echo e(URL::to('login')); ?>">Login</a>
                         </li>
-                        <li><a href="<?php echo e(URL::to('http://blog.beaconinvestment.org/blog')); ?>">Blog</a>
+                        
+                        <li><a href="<?php echo e(URL::to('blog')); ?>">Blog</a>
                         </li>
                     <?php else: ?>
                         <li <?php echo e((Request::is('my-account') ? 'class=active' : '')); ?>><a href="<?php echo e(URL::to('my-account')); ?>">My Account</a>
                         </li>
                         <li><a href="<?php echo e(URL::to('logout')); ?>">Logout</a>
                         </li>
-                        <li><a href="<?php echo e(URL::to('http://blog.beaconinvestment.org/blog')); ?>">Blog</a>
+                        
+                        <li><a href="<?php echo e(URL::to('blog')); ?>">Blog</a>
                         </li>
                     <?php endif; ?>
                 </ul>

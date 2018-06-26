@@ -54,25 +54,25 @@ Blog
                                 <?php echo $blog->content; ?>
 
                             </p>
-                            <p>
-                                <strong>Tags: </strong>
-                                <?php $__empty_2 = true; $__currentLoopData = $blog->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_2 = false; ?>
-                                    <a href="<?php echo e(URL::to('blog/'.mb_strtolower($tag).'/tag')); ?>"><?php echo e($tag); ?></a>,
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_2): ?>
-                                    No Tags
-                                <?php endif; ?>
-                            </p>
-                            <p class="additional-post-wrap">
-                                <span class="additional-post">
-                                    <i class="livicon" data-name="user" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i> by&nbsp;<a href="#"><?php echo e($blog->author->first_name . ' ' . $blog->author->last_name); ?></a>
-                                </span>
-                                <span class="additional-post">
-                                    <i class="livicon" data-name="clock" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i><a href="#"> <?php echo e($blog->created_at->diffForHumans()); ?></a>
-                                </span>
-                                <span class="additional-post">
-                                    <i class="livicon" data-name="comment" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i><a href="#"> <?php echo e($blog->comments->count()); ?> comments</a>
-                                </span>
-                            </p>
+                            
+                                
+                                
+                                    
+                                
+                                    
+                                
+                            
+                            
+                                
+                                    
+                                
+                                
+                                    
+                                
+                                
+                                    
+                                
+                            
                             <hr>
                             <p class="text-right">
                                 <a href="<?php echo e(URL::to('blogitem/'.$blog->slug)); ?>" class="btn btn-primary text-white">Read more</a>
@@ -229,16 +229,16 @@ Blog
                             </li>
                         </ul>
                     </div>
-                    <div class="thumbnail">
-                        <h3>Tags</h3>
-                        <div class="primary text-center">
-                            <?php $__empty_1 = true; $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                <a href="<?php echo e(URL::to('blog/'.$tag.'/tag')); ?>"><?php echo e($tag); ?></a>,
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                No Tags
-                            <?php endif; ?>
-                        </div>
-                    </div>
+                    
+                        
+                        
+                            
+                                
+                            
+                                
+                            
+                        
+                    
                 </div>
                 <!-- /.col-md-4 -->
             </div>

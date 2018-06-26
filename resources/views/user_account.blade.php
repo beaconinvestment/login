@@ -288,6 +288,7 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Sr.no.</th>
+                                                        <th>Reference ID</th>
                                                         <th>Society Name</th>
                                                         <th>Size</th>
                                                         <th>Total Amount</th>
@@ -299,6 +300,7 @@
                                                     @foreach($books->booking as $index =>$book)
                                                         <tr>
                                                             <td>{{$index+1}}</td>
+                                                            <td>{{$book->booking_code}}</td>
                                                             <td>{{$book->society}}</td>
                                                             <td>{{$book->size}}</td>
                                                             <td>{{$book->total_price}}</td>
@@ -336,7 +338,9 @@
                         <h4 class="modal-title">Payment Schedule</h4>
                     </div>
                     <div class="modal-body">
+                        {{--<h5 style=" margin: 0 0 0 2%"><strong>{{"REF ID: ".$book->booking_code}}</strong></h5>--}}
                         <div class="panel-body table-responsive">
+
                             <table class="table table-striped" style="font-size: 90%; margin: -3% 0 0 0">
                                 <thead>
                                 <tr>

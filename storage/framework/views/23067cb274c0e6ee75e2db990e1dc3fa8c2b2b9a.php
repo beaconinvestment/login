@@ -289,6 +289,7 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Sr.no.</th>
+                                                        <th>Reference ID</th>
                                                         <th>Society Name</th>
                                                         <th>Size</th>
                                                         <th>Total Amount</th>
@@ -300,6 +301,7 @@
                                                     <?php $__currentLoopData = $books->booking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index =>$book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <tr>
                                                             <td><?php echo e($index+1); ?></td>
+                                                            <td><?php echo e($book->booking_code); ?></td>
                                                             <td><?php echo e($book->society); ?></td>
                                                             <td><?php echo e($book->size); ?></td>
                                                             <td><?php echo e($book->total_price); ?></td>
@@ -337,7 +339,9 @@
                         <h4 class="modal-title">Payment Schedule</h4>
                     </div>
                     <div class="modal-body">
+                        
                         <div class="panel-body table-responsive">
+
                             <table class="table table-striped" style="font-size: 90%; margin: -3% 0 0 0">
                                 <thead>
                                 <tr>

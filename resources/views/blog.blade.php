@@ -56,25 +56,25 @@ Blog
                             <p>
                                 {!! $blog->content !!}
                             </p>
-                            <p>
-                                <strong>Tags: </strong>
-                                @forelse($blog->tags as $tag)
-                                    <a href="{{ URL::to('blog/'.mb_strtolower($tag).'/tag') }}">{{ $tag }}</a>,
-                                @empty
-                                    No Tags
-                                @endforelse
-                            </p>
-                            <p class="additional-post-wrap">
-                                <span class="additional-post">
-                                    <i class="livicon" data-name="user" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i> by&nbsp;<a href="#">{{$blog->author->first_name . ' ' . $blog->author->last_name}}</a>
-                                </span>
-                                <span class="additional-post">
-                                    <i class="livicon" data-name="clock" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i><a href="#"> {{$blog->created_at->diffForHumans()}}</a>
-                                </span>
-                                <span class="additional-post">
-                                    <i class="livicon" data-name="comment" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i><a href="#"> {{$blog->comments->count()}} comments</a>
-                                </span>
-                            </p>
+                            {{--<p>--}}
+                                {{--<strong>Tags: </strong>--}}
+                                {{--@forelse($blog->tags as $tag)--}}
+                                    {{--<a href="{{ URL::to('blog/'.mb_strtolower($tag).'/tag') }}">{{ $tag }}</a>,--}}
+                                {{--@empty--}}
+                                    {{--No Tags--}}
+                                {{--@endforelse--}}
+                            {{--</p>--}}
+                            {{--<p class="additional-post-wrap">--}}
+                                {{--<span class="additional-post">--}}
+                                    {{--<i class="livicon" data-name="user" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i> by&nbsp;<a href="#">{{$blog->author->first_name . ' ' . $blog->author->last_name}}</a>--}}
+                                {{--</span>--}}
+                                {{--<span class="additional-post">--}}
+                                    {{--<i class="livicon" data-name="clock" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i><a href="#"> {{$blog->created_at->diffForHumans()}}</a>--}}
+                                {{--</span>--}}
+                                {{--<span class="additional-post">--}}
+                                    {{--<i class="livicon" data-name="comment" data-size="13" data-loop="true" data-c="#5bc0de" data-hc="#5bc0de"></i><a href="#"> {{$blog->comments->count()}} comments</a>--}}
+                                {{--</span>--}}
+                            {{--</p>--}}
                             <hr>
                             <p class="text-right">
                                 <a href="{{ URL::to('blogitem/'.$blog->slug) }}" class="btn btn-primary text-white">Read more</a>
@@ -230,16 +230,16 @@ Blog
                             </li>
                         </ul>
                     </div>
-                    <div class="thumbnail">
-                        <h3>Tags</h3>
-                        <div class="primary text-center">
-                            @forelse($tags as $tag)
-                                <a href="{{ URL::to('blog/'.$tag.'/tag') }}">{{ $tag }}</a>,
-                            @empty
-                                No Tags
-                            @endforelse
-                        </div>
-                    </div>
+                    {{--<div class="thumbnail">--}}
+                        {{--<h3>Tags</h3>--}}
+                        {{--<div class="primary text-center">--}}
+                            {{--@forelse($tags as $tag)--}}
+                                {{--<a href="{{ URL::to('blog/'.$tag.'/tag') }}">{{ $tag }}</a>,--}}
+                            {{--@empty--}}
+                                {{--No Tags--}}
+                            {{--@endforelse--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
                 <!-- /.col-md-4 -->
             </div>

@@ -1,5 +1,5 @@
 <?php $__env->startSection('title'); ?>
-    Josh Admin Template
+    Beacon Admin Template
     ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
 <?php $__env->stopSection(); ?>
 

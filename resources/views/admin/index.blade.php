@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Josh Admin Template
+    Beacon Admin Template
     @parent
 @stop
 
