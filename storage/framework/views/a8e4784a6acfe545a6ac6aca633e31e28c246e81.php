@@ -27,7 +27,8 @@ Blog
             </ol>
             <div class="pull-right">
                 <i class="livicon icon3" data-name="edit" data-size="20" data-loop="true" data-c="#3d3d3d" data-hc="#3d3d3d"></i>
-                <a href="<?php echo e(route('blog-account')); ?>">Blog</a>
+                
+                <a href="<?php echo e(URL::to('admin/blog/create')); ?>">Blog</a>
             </div>
         </div>
     </div>
