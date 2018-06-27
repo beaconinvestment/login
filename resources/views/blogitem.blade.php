@@ -2,8 +2,8 @@
 
 {{-- Page title --}}
 @section('title')
-{{$blog->title}}
-@parent
+    {{$blog->title}}
+    @parent
 @stop
 
 {{-- page level styles --}}
@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    @stop
+@stop
 
 
 {{-- Page content --}}
@@ -46,8 +46,8 @@
                 <div class=" thumbnail featured-post-wide img">
                     @if($blog->image)
                         <img src="{{ URL::to('/uploads/blog/'.$blog->image)  }}" class="img-responsive" alt="Image">
-                    @endif
-                    <!-- /.blog-detail-image -->
+                @endif
+                <!-- /.blog-detail-image -->
                     <div class="the-box no-border blog-detail-content">
                         <p class="additional-post-wrap">
                             <span class="additional-post">
@@ -83,15 +83,15 @@
                 <h3 class="comments">{{$blog->comments->count()}} Comments</h3><br />
                 <ul class="media-list">
                     @foreach($blog->comments as $comment)
-                    <li class="media">
-                        <div class="media-body">
-                            <h4 class="media-heading"><i>{{$comment->name}}</i></h4>
-                            <p>{{$comment->comment}}</p>
-                            <p class="text-danger">
-                                <small> {!! $comment->created_at!!}</small>
-                            </p>
-                        </div>
-                    </li>
+                        <li class="media">
+                            <div class="media-body">
+                                <h4 class="media-heading"><i>{{$comment->name}}</i></h4>
+                                <p>{{$comment->comment}}</p>
+                                <p class="text-danger">
+                                    <small> {!! $comment->created_at!!}</small>
+                                </p>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
                 <!-- //Media left section End -->
@@ -121,67 +121,69 @@
                         Submit
                     </button>
                 </div>
-                {!! Form::close() !!}
-                <!-- //Comment Section End -->
+            {!! Form::close() !!}
+            <!-- //Comment Section End -->
             </div>
             <!-- //Business Deal Section End -->
             <!-- /.col-sm-9 -->
             <!-- Recent Posts Section Start -->
             <div class="col-sm-4 col-md-4 col-full-width-left">
                 <div class="the-box">
-                        <h3 class="small-heading text-center">Recent Posts</h3>
+                    <h3 class="small-heading text-center">Recent Posts</h3>
+                    @foreach($recents as $recent)
                         <ul class="media-list media-xs media-dotted">
                             <li class="media">
-                                <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar1.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
+                                <a class="pull-left" href="{{ URL::to('blogitem/'.$recent->slug) }}">
+                                    <img src="{{ URL::to('/uploads/blog/'.$recent->image)  }}" class="img-circle img-responsive pull-left" alt="riot">
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading primary">
-                                                        <a href="#">Elizabeth Owens at Duis autem vel eum iriure dolor in hendrerit in</a>
-                                                    </h4>
+                                        <a href="{{ URL::to('blogitem/'.$recent->slug) }}">{!! $recent->title !!}</a>
+                                    </h4>
                                     <p class="date">
-                                        <small class="text-danger">2hours ago</small>
+                                        <small class="text-danger"><a href="{{ URL::to('blogitem/'.$recent->slug) }}"> {{$recent->created_at->diffForHumans()}}</small>
                                     </p>
                                     <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
+                                        {!! $recent->content !!}
                                     </p>
                                 </div>
                             </li>
                             <hr>
-                            <li class="media">
-                                <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar4.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading primary">
-                                                        <a href="#">Harold Chavez at Duis autem vel eum iriure dolor in hendrerit in</a>
-                                                    </h4>
-                                    <p class="date">
-                                        <small class="text-danger">5hours ago</small>
-                                    </p>
-                                    <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
-                                    </p>
-                                </div>
-                            </li>
-                            <hr>
-                            <li class="media">
-                                <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar5.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading primary">
-                                                        <a href="#">Mihaela Cihac at Duis autem vel eum iriure dolor in hendrerit in</a>
-                                                    </h4>
-                                    <p class="date">
-                                        <small class="text-danger">10hours ago</small>
-                                    </p>
-                                    <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
-                                    </p>
-                                </div>
-                            </li>
+                            {{--<li class="media">--}}
+                            {{--<a class="pull-left" href="#">--}}
+                            {{--<img src="{{ asset('assets/images/authors/avatar4.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">--}}
+                            {{--</a>--}}
+                            {{--<div class="media-body">--}}
+                            {{--<h4 class="media-heading primary">--}}
+                            {{--<a href="#">Harold Chavez at Duis autem vel eum iriure dolor in hendrerit in</a>--}}
+                            {{--</h4>--}}
+                            {{--<p class="date">--}}
+                            {{--<small class="text-danger">5hours ago</small>--}}
+                            {{--</p>--}}
+                            {{--<p class="small">--}}
+                            {{--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo--}}
+                            {{--</p>--}}
+                            {{--</div>--}}
+                            {{--</li>--}}
+                            {{--<hr>--}}
+                            {{--<li class="media">--}}
+                            {{--<a class="pull-left" href="#">--}}
+                            {{--<img src="{{ asset('assets/images/authors/avatar5.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">--}}
+                            {{--</a>--}}
+                            {{--<div class="media-body">--}}
+                            {{--<h4 class="media-heading primary">--}}
+                            {{--<a href="#">Mihaela Cihac at Duis autem vel eum iriure dolor in hendrerit in</a>--}}
+                            {{--</h4>--}}
+                            {{--<p class="date">--}}
+                            {{--<small class="text-danger">10hours ago</small>--}}
+                            {{--</p>--}}
+                            {{--<p class="small">--}}
+                            {{--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo--}}
+                            {{--</p>--}}
+                            {{--</div>--}}
+                            {{--</li>--}}
                         </ul>
+                    @endforeach
                 </div>
                 <!-- /.the-box .bg-primary .no-border .text-center .no-margin -->
             </div>

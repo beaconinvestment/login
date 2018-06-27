@@ -1,7 +1,7 @@
 <?php $__env->startSection('title'); ?>
-<?php echo e($blog->title); ?>
+    <?php echo e($blog->title); ?>
 
-##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+    ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
 <?php $__env->stopSection(); ?>
 
 
@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
 
 
 
@@ -44,8 +44,8 @@
                 <div class=" thumbnail featured-post-wide img">
                     <?php if($blog->image): ?>
                         <img src="<?php echo e(URL::to('/uploads/blog/'.$blog->image)); ?>" class="img-responsive" alt="Image">
-                    <?php endif; ?>
-                    <!-- /.blog-detail-image -->
+                <?php endif; ?>
+                <!-- /.blog-detail-image -->
                     <div class="the-box no-border blog-detail-content">
                         <p class="additional-post-wrap">
                             <span class="additional-post">
@@ -82,15 +82,15 @@
                 <h3 class="comments"><?php echo e($blog->comments->count()); ?> Comments</h3><br />
                 <ul class="media-list">
                     <?php $__currentLoopData = $blog->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li class="media">
-                        <div class="media-body">
-                            <h4 class="media-heading"><i><?php echo e($comment->name); ?></i></h4>
-                            <p><?php echo e($comment->comment); ?></p>
-                            <p class="text-danger">
-                                <small> <?php echo $comment->created_at; ?></small>
-                            </p>
-                        </div>
-                    </li>
+                        <li class="media">
+                            <div class="media-body">
+                                <h4 class="media-heading"><i><?php echo e($comment->name); ?></i></h4>
+                                <p><?php echo e($comment->comment); ?></p>
+                                <p class="text-danger">
+                                    <small> <?php echo $comment->created_at; ?></small>
+                                </p>
+                            </div>
+                        </li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>
                 <!-- //Media left section End -->
@@ -125,68 +125,71 @@
                         Submit
                     </button>
                 </div>
-                <?php echo Form::close(); ?>
+            <?php echo Form::close(); ?>
 
-                <!-- //Comment Section End -->
+            <!-- //Comment Section End -->
             </div>
             <!-- //Business Deal Section End -->
             <!-- /.col-sm-9 -->
             <!-- Recent Posts Section Start -->
             <div class="col-sm-4 col-md-4 col-full-width-left">
                 <div class="the-box">
-                        <h3 class="small-heading text-center">Recent Posts</h3>
+                    <h3 class="small-heading text-center">Recent Posts</h3>
+                    <?php $__currentLoopData = $recents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <ul class="media-list media-xs media-dotted">
                             <li class="media">
-                                <a class="pull-left" href="#">
-                                    <img src="<?php echo e(asset('assets/images/authors/avatar1.jpg')); ?>" class="img-circle img-responsive pull-left" alt="riot">
+                                <a class="pull-left" href="<?php echo e(URL::to('blogitem/'.$recent->slug)); ?>">
+                                    <img src="<?php echo e(URL::to('/uploads/blog/'.$recent->image)); ?>" class="img-circle img-responsive pull-left" alt="riot">
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading primary">
-                                                        <a href="#">Elizabeth Owens at Duis autem vel eum iriure dolor in hendrerit in</a>
-                                                    </h4>
+                                        <a href="<?php echo e(URL::to('blogitem/'.$recent->slug)); ?>"><?php echo $recent->title; ?></a>
+                                    </h4>
                                     <p class="date">
-                                        <small class="text-danger">2hours ago</small>
+                                        <small class="text-danger"><a href="<?php echo e(URL::to('blogitem/'.$recent->slug)); ?>"> <?php echo e($recent->created_at->diffForHumans()); ?></small>
                                     </p>
                                     <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
+                                        <?php echo $recent->content; ?>
+
                                     </p>
                                 </div>
                             </li>
                             <hr>
-                            <li class="media">
-                                <a class="pull-left" href="#">
-                                    <img src="<?php echo e(asset('assets/images/authors/avatar4.jpg')); ?>" class="img-circle img-responsive pull-left" alt="riot">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading primary">
-                                                        <a href="#">Harold Chavez at Duis autem vel eum iriure dolor in hendrerit in</a>
-                                                    </h4>
-                                    <p class="date">
-                                        <small class="text-danger">5hours ago</small>
-                                    </p>
-                                    <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
-                                    </p>
-                                </div>
-                            </li>
-                            <hr>
-                            <li class="media">
-                                <a class="pull-left" href="#">
-                                    <img src="<?php echo e(asset('assets/images/authors/avatar5.jpg')); ?>" class="img-circle img-responsive pull-left" alt="riot">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading primary">
-                                                        <a href="#">Mihaela Cihac at Duis autem vel eum iriure dolor in hendrerit in</a>
-                                                    </h4>
-                                    <p class="date">
-                                        <small class="text-danger">10hours ago</small>
-                                    </p>
-                                    <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
-                                    </p>
-                                </div>
-                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                         </ul>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
                 <!-- /.the-box .bg-primary .no-border .text-center .no-margin -->
             </div>
