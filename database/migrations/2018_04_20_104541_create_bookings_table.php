@@ -17,6 +17,7 @@ class CreateBookingsTable extends Migration
             $table->increments('id');
             $table->tinyInteger('user_id')->nullable();
             $table->string('booking_code');
+            $table->tinyInteger('form_no');
             $table->string('type')->nullable();
             $table->string('block')->nullable();
             $table->bigInteger('total_price')->nullable();

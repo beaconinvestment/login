@@ -31,6 +31,7 @@ use View;
 use DB;
 use Carbon\Carbon;
 use http\Env\Response;
+use App\Blog;
 
 
 class FrontEndController extends JoshController
@@ -110,6 +111,8 @@ class FrontEndController extends JoshController
 //        $payments = array();
 //        $p_date = array();
         $books = User::find($userid);
+        $recents= Blog::orderBy('created_at','desc')->take(3)->get();
+        $blogs = Blog::latest()->paginate(5);
 //        foreach ($books->booking as $book) {
 //            $b_id = $book->id;
 //            $t_rows = $book->total_installments;
@@ -141,7 +144,7 @@ class FrontEndController extends JoshController
 //        $p_date = Carbon::parse($pay->created_at)->format('d/m/Y');
 //        return view('user_account', compact('user','s','books' ,'countries',
 //            't_rows','b_date','i_amount','payments','p_date','confirm_after','userid','pays','b_id'));
-        return view('user_account', compact('user','books' ,'countries'));
+        return view('user_account', compact('user','books' ,'countries','recents','blogs'));
     }
 
     public function blogAccount(User $user)

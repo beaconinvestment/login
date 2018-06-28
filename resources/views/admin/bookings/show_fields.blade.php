@@ -19,6 +19,13 @@
     <hr>
 </div>
 
+<!-- Form No Field -->
+<div class="form-group">
+    {!! Form::label('form_no', 'Form No:') !!}
+    <p>{!! $booking->form_no !!}</p>
+    <hr>
+</div>
+
 <!-- Type Field -->
 <div class="form-group">
     {!! Form::label('type', 'Type:') !!}

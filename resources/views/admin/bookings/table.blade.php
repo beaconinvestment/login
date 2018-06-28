@@ -4,6 +4,7 @@
         <th>ID</th>
         <th>User ID</th>
         <th>Booking Code</th>
+        <th>Form No</th>
         <th>Type</th>
         <th>Block</th>
         <th>Total Price</th>
@@ -22,6 +23,7 @@
             <td>{!! $booking->id !!}</td>
             <td>{!! $booking->user_id !!}</td>
             <td>{!! $booking->booking_code !!}</td>
+            <td>{!! $booking->form_no !!}</td>
             <td>{!! $booking->type !!}</td>
             <td>{!! $booking->block !!}</td>
             <td>{!! $booking->total_price !!}</td>

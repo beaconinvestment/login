@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         DB::table('bookings')->insert([
 
             'user_id' => '1',
+            'booking_code' => 'FDHI/2681/R05M/2018',
+            'form_no' => '2651',
             'type' => 'residential',
             'block' => 'general',
             'total_price' => '1800000',

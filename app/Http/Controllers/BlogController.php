@@ -57,7 +57,7 @@ class BlogController extends JoshController
             abort('404');
         }
         $recents= Blog::orderBy('created_at','desc')->take(3)->get();
-        $populas= Blog::orderBy('views','desc')->take(3)->get();
+        $populars= Blog::orderBy('views','desc')->take(3)->get();
         // Show the page
         return view('blogitem', compact('blog','recents','populars'));
     }

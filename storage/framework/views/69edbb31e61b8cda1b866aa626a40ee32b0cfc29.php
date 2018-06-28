@@ -4,6 +4,7 @@
         <th>ID</th>
         <th>User ID</th>
         <th>Booking Code</th>
+        <th>Form No</th>
         <th>Type</th>
         <th>Block</th>
         <th>Total Price</th>
@@ -22,6 +23,7 @@
             <td><?php echo $booking->id; ?></td>
             <td><?php echo $booking->user_id; ?></td>
             <td><?php echo $booking->booking_code; ?></td>
+            <td><?php echo $booking->form_no; ?></td>
             <td><?php echo $booking->type; ?></td>
             <td><?php echo $booking->block; ?></td>
             <td><?php echo $booking->total_price; ?></td>

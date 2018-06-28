@@ -14,6 +14,14 @@
 
 </div>
 
+<!-- Form No Field -->
+<div class="form-group col-sm-12">
+    <?php echo Form::label('form_no', 'Form No:'); ?>
+
+    <?php echo Form::text('form_no', null, ['class' => 'form-control']); ?>
+
+</div>
+
 <!-- Type Field -->
 <div class="form-group col-sm-12">
     <?php echo Form::label('type', 'Type:'); ?>

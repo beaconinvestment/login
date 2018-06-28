@@ -10,6 +10,12 @@
     {!! Form::text('booking_code', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Form No Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('form_no', 'Form No:') !!}
+    {!! Form::text('form_no', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Type Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('type', 'Type:') !!}

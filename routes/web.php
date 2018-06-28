@@ -228,6 +228,7 @@ Route::get('forgot-password/{userId}/{passwordResetCode}', 'FrontEndController@g
 Route::group(['middleware' => 'user'], function () {
     Route::put('my-account', 'FrontEndController@update');
     Route::get('my-account', 'FrontEndController@myAccount')->name('my-account');
+    Route::get('my-account/get_payments', 'FrontEndController@get_Ajax');
 });
 Route::get('logout', 'FrontEndController@getLogout')->name('logout');
 # contact form
