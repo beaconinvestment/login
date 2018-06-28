@@ -19,8 +19,8 @@ class SentinelBlogger
     {
         if(!Sentinel::check())
             return redirect('admin/signin')->with('info', 'You must be logged in!');
-        elseif(!Sentinel::inRole('blogger'))
-            return redirect('my-account');
+//        elseif(!Sentinel::inRole('blogger'))
+//            return redirect('admin/index1');
 
 //        $tasks_count = Task::where('user_id', Sentinel::getUser()->id)->count();
 //        $request->attributes->add(['tasks_count' => $tasks_count]);

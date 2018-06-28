@@ -11,13 +11,6 @@ include_once 'web_builder.php';
 |
 */
 
-//Check connection of Blogging Database
-//Route::get('check-connection-2', function () {
-//    $users = DB::connection("blogdb")->table("blogs")->first();
-//    dd($users);
-//});
-
-
 Route::pattern('slug', '[a-z0-9- _]+');
 
 Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
@@ -43,6 +36,7 @@ Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
     });
 //    Route::get('{provider}', 'AuthController@redirectToProvider');
 //    Route::get('{provider}/callback', 'AuthController@handleProviderCallback');
+
 
 
     # Register2
@@ -195,47 +189,70 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin', 'middleware' => 'admin',
 
 });
 
-Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
-
-    # Error pages should be shown without requiring login
-    Route::get('404', function () {
-        return view('admin/404');
-    });
-    Route::get('500', function () {
-        return view('admin/500');
-    });
-    # Lock screen
-    Route::get('{id}/lockscreen', 'UsersController@lockscreen')->name('lockscreen');
-    Route::post('{id}/lockscreen', 'UsersController@postLockscreen')->name('lockscreen');
-    # All basic routes defined here
-    Route::get('login', 'AuthController@getSignin')->name('login');
-    Route::get('signin', 'AuthController@getSignin')->name('signin');
-    Route::post('signin', 'AuthController@postSignin')->name('postSignin');
-    Route::post('signup', 'AuthController@postSignup')->name('admin.signup');
-    Route::post('forgot-password', 'AuthController@postForgotPassword')->name('forgot-password');
-    Route::get('login2', function () {
-        return view('admin/login2');
-    });
-//    Route::get('{provider}', 'AuthController@redirectToProvider');
-//    Route::get('{provider}/callback', 'AuthController@handleProviderCallback');
 
 
-    # Register2
-    Route::get('register2', function () {
-        return view('admin/register2');
-    });
-    Route::post('register2', 'AuthController@postRegister2')->name('register2');
+# Remaining pages will be called from below controller method
+# in real world scenario, you may be required to define all routes manually
 
-    # Forgot Password Confirmation
-    Route::get('forgot-password/{userId}/{passwordResetCode}', 'AuthController@getForgotPasswordConfirm')->name('forgot-password-confirm');
-    Route::post('forgot-password/{userId}/{passwordResetCode}', 'AuthController@getForgotPasswordConfirm');
-
-    # Logout
-    Route::get('logout', 'AuthController@getLogout')->name('logout');
-
-    # Account Activation
-    Route::get('activate/{userId}/{activationCode}', 'AuthController@getActivate')->name('activate');
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+    Route::get('{name?}', 'JoshController@showView');
 });
+
+#FrontEndController
+Route::get('login', 'FrontEndController@getLogin')->name('login');
+Route::post('login', 'FrontEndController@postLogin')->name('login');
+Route::get('register', 'FrontEndController@getRegister')->name('register');
+Route::post('register','FrontEndController@postRegister')->name('register');
+Route::get('activate/{userId}/{activationCode}','FrontEndController@getActivate')->name('activate');
+Route::get('forgot-password','FrontEndController@getForgotPassword')->name('forgot-password');
+Route::post('forgot-password', 'FrontEndController@postForgotPassword');
+
+#Social Logins
+Route::get('facebook', 'Admin\FacebookAuthController@redirectToProvider');
+Route::get('facebook/callback', 'Admin\FacebookAuthController@handleProviderCallback');
+
+Route::get('linkedin', 'Admin\LinkedinAuthController@redirectToProvider');
+Route::get('linkedin/callback', 'Admin\LinkedinAuthController@handleProviderCallback');
+
+Route::get('google', 'Admin\GoogleAuthController@redirectToProvider');
+Route::get('google/callback', 'Admin\GoogleAuthController@handleProviderCallback');
+
+//Route::get('twitter', 'Admin\TwitterAuthController@redirectToProvider');
+//Route::get('twitter/callback', 'Admin\TwitterAuthController@handleProviderCallback');
+
+
+# Forgot Password Confirmation
+Route::post('forgot-password/{userId}/{passwordResetCode}', 'FrontEndController@postForgotPasswordConfirm');
+Route::get('forgot-password/{userId}/{passwordResetCode}', 'FrontEndController@getForgotPasswordConfirm')->name('forgot-password-confirm');
+# My account display and update details
+Route::group(['middleware' => 'user'], function () {
+    Route::put('my-account', 'FrontEndController@update');
+    Route::get('my-account', 'FrontEndController@myAccount')->name('my-account');
+});
+Route::get('logout', 'FrontEndController@getLogout')->name('logout');
+# contact form
+Route::post('contact', 'FrontEndController@postContact')->name('contact');
+
+#frontend views
+Route::get('/', ['as' => 'home', function () {
+    return view('index');
+}]);
+
+Route::get('blog','BlogController@index')->name('blog');
+Route::get('blog/{slug}/tag', 'BlogController@getBlogTag');
+Route::get('blogitem/{slug?}', 'BlogController@getBlog');
+Route::post('blogitem/{blog}/comment', 'BlogController@storeComment');
+
+//news
+Route::get('news', 'NewsController@index')->name('news');
+Route::get('news/{news}', 'NewsController@show')->name('news.show');
+
+
+Route::get('{name?}', 'FrontEndController@showFrontEndView');
+# End of frontend views
+
+
+
 
 Route::group(['prefix' => 'admin', 'middleware' => 'blogger', 'as' => 'admin.'], function () {
 //    # GUI Crud Generator
@@ -247,6 +264,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'blogger', 'as' => 'admin.'],
 
     # Dashboard / Index
     Route::get('/', 'JoshController@showHome')->name('dashboard');
+
 //    # crop demo
 //    Route::post('crop_demo', 'JoshController@crop_demo')->name('crop_demo');
 //    //Log viewer routes
@@ -368,69 +386,3 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin', 'middleware' => 'blogger
     Route::post('task/{task}/delete', 'TaskController@delete')->name('delete');
 
 });
-
-
-# Remaining pages will be called from below controller method
-# in real world scenario, you may be required to define all routes manually
-
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-    Route::get('{name?}', 'JoshController@showView');
-});
-
-#FrontEndController
-Route::get('login', 'FrontEndController@getLogin')->name('login');
-Route::post('login', 'FrontEndController@postLogin')->name('login');
-Route::get('register', 'FrontEndController@getRegister')->name('register');
-Route::post('register','FrontEndController@postRegister')->name('register');
-Route::get('activate/{userId}/{activationCode}','FrontEndController@getActivate')->name('activate');
-Route::get('forgot-password','FrontEndController@getForgotPassword')->name('forgot-password');
-//Route::post('forgot-password', 'FrontEndController@postForgotPassword');
-Route::post('forgot-password', 'FrontEndController@postForgotPW');
-
-#Social Logins
-Route::get('facebook', 'Admin\FacebookAuthController@redirectToProvider');
-Route::get('facebook/callback', 'Admin\FacebookAuthController@handleProviderCallback');
-
-Route::get('linkedin', 'Admin\LinkedinAuthController@redirectToProvider');
-Route::get('linkedin/callback', 'Admin\LinkedinAuthController@handleProviderCallback');
-
-Route::get('google', 'Admin\GoogleAuthController@redirectToProvider');
-Route::get('google/callback', 'Admin\GoogleAuthController@handleProviderCallback');
-
-//Route::get('twitter', 'Admin\TwitterAuthController@redirectToProvider');
-//Route::get('twitter/callback', 'Admin\TwitterAuthController@handleProviderCallback');
-
-
-# Forgot Password Confirmation
-Route::post('forgot-password/{userId}/{passwordResetCode}', 'FrontEndController@postForgotPasswordConfirm');
-Route::get('forgot-password/{userId}/{passwordResetCode}', 'FrontEndController@getForgotPasswordConfirm')->name('forgot-password-confirm');
-# My account display and update details
-Route::group(['middleware' => 'user'], function () {
-    Route::put('my-account', 'FrontEndController@update');
-    Route::get('my-account', 'FrontEndController@myAccount')->name('my-account');
-//    Route::get('blog-account', 'other\BlogController@create')->name('blog-account');
-    Route::get('my-account/get_payments', 'FrontEndController@get_Ajax');
-});
-
-Route::get('logout', 'FrontEndController@getLogout')->name('logout');
-# contact form
-Route::post('contact', 'FrontEndController@postContact')->name('contact');
-
-#frontend views
-Route::get('/', ['as' => 'home', function () {
-    return view('index');
-}]);
-
-Route::get('blog','BlogController@index')->name('blog');
-Route::get('blog/{slug}/tag', 'BlogController@getBlogTag');
-Route::get('blogitem/{slug?}', 'BlogController@getBlog');
-Route::post('blogitem/{blog}/comment', 'BlogController@storeComment');
-//Route::post('/get_payments/post', 'FrontEndController@get_p');
-
-//news
-Route::get('news', 'NewsController@index')->name('news');
-Route::get('news/{news}', 'NewsController@show')->name('news.show');
-
-
-Route::get('{name?}', 'FrontEndController@showFrontEndView');
-# End of frontend views
