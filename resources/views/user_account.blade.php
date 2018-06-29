@@ -334,17 +334,18 @@
                                 <div id="tab3" class="tab-pane fade">
                                     <div class="row">
                                         <div class="content">
-                                            <div class="col-md-12">
+                                            <div class="col-md-8">
                                             @forelse ($blogs as $blog)
                                                 <!-- BEGIN FEATURED POST -->
                                                     <div class="featured-post-wide thumbnail">
                                                         @if($blog->image)
-                                                            <img src="{{ URL::to('/uploads/blog/'.$blog->image)  }}" class="img-responsive" alt="Image">
+                                                            <img src="{{ URL::to('/uploads/blog/'.$blog->image)  }}" style="border-radius: 30%; max-width: 200px" class="img-responsive" alt="Image">
                                                         @endif
                                                         <div class="featured-text relative-left">
                                                             <h3 class="primary"><a href="{{ URL::to('blogitem/'.$blog->slug) }}">{{$blog->title}}</a></h3>
                                                             <p>
-                                                                {!! $blog->content !!}
+                                                                {{--{!! $blog->content !!}--}}
+                                                                {!!  substr(strip_tags($blog->content), 0, 500) !!}
                                                             </p>
                                                             <p>
                                                                 <strong>Tags: </strong>

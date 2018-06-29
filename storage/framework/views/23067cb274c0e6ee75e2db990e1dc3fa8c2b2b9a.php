@@ -338,17 +338,18 @@
                                 <div id="tab3" class="tab-pane fade">
                                     <div class="row">
                                         <div class="content">
-                                            <div class="col-md-12">
+                                            <div class="col-md-8">
                                             <?php $__empty_1 = true; $__currentLoopData = $blogs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <!-- BEGIN FEATURED POST -->
                                                     <div class="featured-post-wide thumbnail">
                                                         <?php if($blog->image): ?>
-                                                            <img src="<?php echo e(URL::to('/uploads/blog/'.$blog->image)); ?>" class="img-responsive" alt="Image">
+                                                            <img src="<?php echo e(URL::to('/uploads/blog/'.$blog->image)); ?>" style="border-radius: 30%; max-width: 200px" class="img-responsive" alt="Image">
                                                         <?php endif; ?>
                                                         <div class="featured-text relative-left">
                                                             <h3 class="primary"><a href="<?php echo e(URL::to('blogitem/'.$blog->slug)); ?>"><?php echo e($blog->title); ?></a></h3>
                                                             <p>
-                                                                <?php echo $blog->content; ?>
+                                                                
+                                                                <?php echo substr(strip_tags($blog->content), 0, 500); ?>
 
                                                             </p>
                                                             <p>

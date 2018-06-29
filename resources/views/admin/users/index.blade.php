@@ -45,8 +45,8 @@ Users List
                     <thead>
                         <tr class="filters">
                             <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+                            <th>Full Name</th>
+                            <th>Father/Husband Name</th>
                             <th>Cell No</th>
                             <th>CNIC</th>
                             <th>User E-mail</th>

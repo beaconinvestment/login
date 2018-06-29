@@ -144,7 +144,8 @@
                                         <small class="text-danger"><a href="{{ URL::to('blogitem/'.$recent->slug) }}"> {{$recent->created_at->diffForHumans()}}</small>
                                     </p>
                                     <p class="small">
-                                        {!! $recent->content !!}
+                                        {{--{!! $recent->content !!}--}}
+                                        {!!  substr(strip_tags($recent->content), 0, 150) !!}
                                     </p>
                                 </div>
                             </li>

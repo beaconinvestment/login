@@ -7,11 +7,11 @@
 return array(
 
 	'user_profile'			=> 'User Profile',
-	'first_name'			=> 'First Name',
+	'first_name'			=> 'Full Name',
 	'cell_no'			    => 'Cell No',
 	'cnic'			        => 'CNIC',
 	'ref_by'			    => 'Referred By',
-	'last_name'				=> 'Last Name',
+	'last_name'				=> 'Father/Husband Name',
 	'email'					=> 'E-mail',
 	'phone'					=> 'Phone Number',
 	'address'				=> 'Address',

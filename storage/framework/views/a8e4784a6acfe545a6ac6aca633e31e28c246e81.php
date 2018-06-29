@@ -52,7 +52,8 @@ Blog
                         <div class="featured-text relative-left">
                             <h3 class="primary"><a href="<?php echo e(URL::to('blogitem/'.$blog->slug)); ?>"><?php echo e($blog->title); ?></a></h3>
                             <p>
-                                <?php echo $blog->content; ?>
+                                
+                                <?php echo substr(strip_tags($blog->content), 0, 500); ?>
 
                             </p>
                             <p>
@@ -128,7 +129,8 @@ Blog
                                     </div>
                                     <h4 class="text-primary"><?php echo $popular->title; ?></h4>
                                     <p>
-                                        <?php echo $popular->content; ?>
+                                        
+                                        <?php echo substr(strip_tags($popular->content), 0, 150); ?>
 
                                     </p>
                                     <div class="text-right primary marbtm"><a href="<?php echo e(URL::to('blogitem/'.$popular->slug)); ?>">Read more</a>
@@ -150,7 +152,8 @@ Blog
                                     </div>
                                     <h4 class="text-primary"><?php echo $recent->title; ?></h4>
                                     <p>
-                                        <?php echo $recent->content; ?>
+                                        
+                                        <?php echo substr(strip_tags($recent->content), 0, 150); ?>
 
                                     </p>
                                     <div class="text-right primary marbtm"><a href="<?php echo e(URL::to('blogitem/'.$recent->slug)); ?>">Read more</a>

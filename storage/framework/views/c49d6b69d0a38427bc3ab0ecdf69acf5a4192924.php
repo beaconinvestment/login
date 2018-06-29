@@ -149,7 +149,8 @@
                                         <small class="text-danger"><a href="<?php echo e(URL::to('blogitem/'.$recent->slug)); ?>"> <?php echo e($recent->created_at->diffForHumans()); ?></small>
                                     </p>
                                     <p class="small">
-                                        <?php echo $recent->content; ?>
+                                        
+                                        <?php echo substr(strip_tags($recent->content), 0, 150); ?>
 
                                     </p>
                                 </div>

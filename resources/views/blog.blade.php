@@ -55,7 +55,8 @@ Blog
                         <div class="featured-text relative-left">
                             <h3 class="primary"><a href="{{ URL::to('blogitem/'.$blog->slug) }}">{{$blog->title}}</a></h3>
                             <p>
-                                {!! $blog->content !!}
+                                {{--{!! str_limit($blog->content,$limit=10) !!}--}}
+                                {!!  substr(strip_tags($blog->content), 0, 500) !!}
                             </p>
                             <p>
                                 <strong>Tags: </strong>
@@ -129,7 +130,8 @@ Blog
                                     </div>
                                     <h4 class="text-primary">{!! $popular->title !!}</h4>
                                     <p>
-                                        {!! $popular->content !!}
+                                        {{--{!! str_limit($popular->content) !!}--}}
+                                        {!!  substr(strip_tags($popular->content), 0, 150) !!}
                                     </p>
                                     <div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$popular->slug) }}">Read more</a>
                                     </div>
@@ -150,7 +152,8 @@ Blog
                                     </div>
                                     <h4 class="text-primary">{!! $recent->title !!}</h4>
                                     <p>
-                                        {!! $recent->content !!}
+                                        {{--{!! $recent->content !!}--}}
+                                        {!!  substr(strip_tags($recent->content), 0, 150) !!}
                                     </p>
                                     <div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$recent->slug) }}">Read more</a>
                                     </div>

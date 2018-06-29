@@ -121,14 +121,14 @@ $("#commentForm").bootstrapValidator({
             required: true,
             minlength: 3
         },
-        bio: {
-            validators: {
-                notEmpty: {
-                    message: 'Bio is required and cannot be empty'
-                }
-            },
-            minlength: 20
-        },
+        // bio: {
+        //     validators: {
+        //         notEmpty: {
+        //             message: 'Bio is required and cannot be empty'
+        //         }
+        //     },
+        //     minlength: 20
+        // },
 
         gender: {
             validators: {

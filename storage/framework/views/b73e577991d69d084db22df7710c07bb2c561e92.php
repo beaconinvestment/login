@@ -1,3 +1,6 @@
+ 
+
+
 <?php $__env->startSection('title'); ?>
     Add User
     ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
@@ -63,7 +66,7 @@
                                     <div class="tab-pane" id="tab1">
                                         <h2 class="hidden">&nbsp;</h2>
                                         <div class="form-group <?php echo e($errors->first('first_name', 'has-error')); ?>">
-                                            <label for="first_name" class="col-sm-2 control-label">First Name *</label>
+                                            <label for="first_name" class="col-sm-2 control-label">Full Name *</label>
                                             <div class="col-sm-10">
                                                 <input id="first_name" name="first_name" type="text"
                                                        placeholder="First Name" class="form-control required"
@@ -75,7 +78,7 @@
                                         </div>
 
                                         <div class="form-group <?php echo e($errors->first('last_name', 'has-error')); ?>">
-                                            <label for="last_name" class="col-sm-2 control-label">Last Name *</label>
+                                            <label for="last_name" class="col-sm-2 control-label">Father/Husband Name *</label>
                                             <div class="col-sm-10">
                                                 <input id="last_name" name="last_name" type="text" placeholder="Last Name"
                                                        class="form-control required" value="<?php echo old('last_name'); ?>"/>
