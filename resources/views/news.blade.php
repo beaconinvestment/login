@@ -99,7 +99,8 @@
                 </li>
             </ol>
             <div class="pull-right">
-                <i class="livicon icon3" data-name="responsive-menu" data-size="20" data-loop="true" data-c="#3d3d3d" data-hc="#3d3d3d"></i> News
+                <i class="livicon icon3" data-name="edit" data-size="20" data-loop="true" data-c="#3d3d3d" data-hc="#3d3d3d"></i>
+                <a href="{{ URL::to('admin/news/create') }}"> News</a>
             </div>
         </div>
     </div>
@@ -372,127 +373,141 @@
                         <!-- Tab-content Start -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_default_1">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object" src="{{ asset('assets/images/image_13.jpg') }}" alt="image">
-                                        </a>
+                                @forelse($popular as $populars)
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                {{--<img class="media-object" src="{{ asset('assets/images/image_15.jpg') }}" alt="image">--}}
+                                                <img class="media-object" src="{{ URL::to('/uploads/news/'.$populars->image)  }}"
+                                                     alt="image">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <a href="#">
+                                                <h5 class="media-heading ">{!!  substr(strip_tags($populars->content), 0, 150) !!}</h5></a>
+                                            <span class="text-danger">{!! date('d-m-Y', strtotime($populars->created_at)) !!}</span>
+                                            {{--<span class="text-danger">{!! ($recentnew->created_at) !!}</span>--}}
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <h5 class="media-heading ">Efficiently unleash cross-media information
-                                                without cross-media value.</h5></a><span class="text-danger">May 10, 2015</span>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object" src="{{ asset('assets/images/image_14.jpg') }}" alt="image">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <h5 class="media-heading ">Efficiently unleash cross-media information
-                                                without cross-media value.</h5></a><span
-                                                class="text-danger">May 8, 2015</span>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object" src="{{ asset('assets/images/image_15.jpg') }}" alt="image">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <h5 class="media-heading ">Efficiently unleash cross-media information
-                                                without cross-media value.</h5></a><span
-                                                class="text-danger">May5, 2015</span>
-                                    </div>
-                                </div>
+                                {{--<div class="media">--}}
+                                    {{--<div class="media-left">--}}
+                                        {{--<a href="#">--}}
+                                            {{--<img class="media-object" src="{{ asset('assets/images/image_14.jpg') }}" alt="image">--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="media-body">--}}
+                                        {{--<a href="#">--}}
+                                            {{--<h5 class="media-heading ">Efficiently unleash cross-media information--}}
+                                                {{--without cross-media value.</h5></a><span--}}
+                                                {{--class="text-danger">May 8, 2015</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="media">--}}
+                                    {{--<div class="media-left">--}}
+                                        {{--<a href="#">--}}
+                                            {{--<img class="media-object" src="{{ asset('assets/images/image_15.jpg') }}" alt="image">--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="media-body">--}}
+                                        {{--<a href="#">--}}
+                                            {{--<h5 class="media-heading ">Efficiently unleash cross-media information--}}
+                                                {{--without cross-media value.</h5></a><span--}}
+                                                {{--class="text-danger">May5, 2015</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                @empty
+                                    <h3>No News Exists!</h3>
+                                @endforelse
                             </div>
                             <div class="tab-pane" id="tab_default_2">
+                                @forelse($recentnews as $recentnew)
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#">
-                                            <img class="media-object" src="{{ asset('assets/images/image_15.jpg') }}" alt="image">
+                                            {{--<img class="media-object" src="{{ asset('assets/images/image_15.jpg') }}" alt="image">--}}
+                                            <img class="media-object" src="{{ URL::to('/uploads/news/'.$recentnew->image)  }}"
+                                                 alt="image">
                                         </a>
                                     </div>
                                     <div class="media-body">
                                         <a href="#">
-                                            <h5 class="media-heading ">Efficiently unleash cross-media information
-                                                without cross-media value.</h5></a><span class="text-danger">May 13, 2015</span>
+                                            <h5 class="media-heading ">{!!  substr(strip_tags($recentnew->content), 0, 150) !!}</h5></a>
+                                            <span class="text-danger">{!! date('d-m-Y', strtotime($recentnew->created_at)) !!}</span>
+                                        {{--<span class="text-danger">{!! ($recentnew->created_at) !!}</span>--}}
                                     </div>
                                 </div>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object" src="{{ asset('assets/images/image_13.jpg') }}" alt="image">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <h5 class="media-heading ">Efficiently unleash cross-media information
-                                                without cross-media value.</h5></a><span class="text-danger">May 12, 2015</span>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object " src="{{ asset('assets/images/image_14.jpg') }}" alt="image">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <h5 class="media-heading ">Efficiently unleash cross-media information
-                                                without cross-media value.</h5></a>
-                                        <span class="text-danger">Feb 28, 2015</span>
-                                    </div>
-                                </div>
+                                {{--<div class="media">--}}
+                                    {{--<div class="media-left">--}}
+                                        {{--<a href="#">--}}
+                                            {{--<img class="media-object" src="{{ asset('assets/images/image_13.jpg') }}" alt="image">--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="media-body">--}}
+                                        {{--<a href="#">--}}
+                                            {{--<h5 class="media-heading ">Efficiently unleash cross-media information--}}
+                                                {{--without cross-media value.</h5></a><span class="text-danger">May 12, 2015</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="media">--}}
+                                    {{--<div class="media-left">--}}
+                                        {{--<a href="#">--}}
+                                            {{--<img class="media-object " src="{{ asset('assets/images/image_14.jpg') }}" alt="image">--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="media-body">--}}
+                                        {{--<a href="#">--}}
+                                            {{--<h5 class="media-heading ">Efficiently unleash cross-media information--}}
+                                                {{--without cross-media value.</h5></a>--}}
+                                        {{--<span class="text-danger">Feb 28, 2015</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                    @empty
+                                        <h3>No News Exists!</h3>
+                                    @endforelse
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="comments">
-                    <h3>Comments</h3>
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object" src="{{ asset('assets/images/image_13.jpg') }}" alt="image">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <a href="#">
-                                <h5 class="media-heading ">Efficiently unleash cross-media information without
-                                    cross-media value.</h5></a>
-                            <span class="text-danger">Feb 28, 2015</span>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object" src="{{ asset('assets/images/image_14.jpg') }}" alt="image">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <a href="#">
-                                <h5 class="media-heading ">Efficiently unleash cross-media information without
-                                    cross-media value.</h5></a><span class="text-danger">May 11, 2015</span>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object" src="{{ asset('assets/images/image_15.jpg') }}" alt="image">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <a href="#">
-                                <h5 class="media-heading ">Efficiently unleash cross-media information without
-                                    cross-media value.</h5></a><span class="text-danger">Feb 28, 2015</span>
-                        </div>
-                    </div>
-                </div>
+                {{--<div class="comments">--}}
+                    {{--<h3>Comments</h3>--}}
+                    {{--<div class="media">--}}
+                        {{--<div class="media-left">--}}
+                            {{--<a href="#">--}}
+                                {{--<img class="media-object" src="{{ asset('assets/images/image_13.jpg') }}" alt="image">--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                        {{--<div class="media-body">--}}
+                            {{--<a href="#">--}}
+                                {{--<h5 class="media-heading ">Efficiently unleash cross-media information without--}}
+                                    {{--cross-media value.</h5></a>--}}
+                            {{--<span class="text-danger">Feb 28, 2015</span>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="media">--}}
+                        {{--<div class="media-left">--}}
+                            {{--<a href="#">--}}
+                                {{--<img class="media-object" src="{{ asset('assets/images/image_14.jpg') }}" alt="image">--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                        {{--<div class="media-body">--}}
+                            {{--<a href="#">--}}
+                                {{--<h5 class="media-heading ">Efficiently unleash cross-media information without--}}
+                                    {{--cross-media value.</h5></a><span class="text-danger">May 11, 2015</span>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="media">--}}
+                        {{--<div class="media-left">--}}
+                            {{--<a href="#">--}}
+                                {{--<img class="media-object" src="{{ asset('assets/images/image_15.jpg') }}" alt="image">--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                        {{--<div class="media-body">--}}
+                            {{--<a href="#">--}}
+                                {{--<h5 class="media-heading ">Efficiently unleash cross-media information without--}}
+                                    {{--cross-media value.</h5></a><span class="text-danger">Feb 28, 2015</span>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
             <!-- Tab-content End -->
         </div>

@@ -113,6 +113,7 @@ class FrontEndController extends JoshController
         $books = User::find($userid);
         $recents= Blog::orderBy('created_at','desc')->take(3)->get();
         $blogs = Blog::latest()->paginate(5);
+        $populars= Blog::orderBy('views','desc')->take(3)->get();
 //        foreach ($books->booking as $book) {
 //            $b_id = $book->id;
 //            $t_rows = $book->total_installments;
@@ -144,7 +145,7 @@ class FrontEndController extends JoshController
 //        $p_date = Carbon::parse($pay->created_at)->format('d/m/Y');
 //        return view('user_account', compact('user','s','books' ,'countries',
 //            't_rows','b_date','i_amount','payments','p_date','confirm_after','userid','pays','b_id'));
-        return view('user_account', compact('user','books' ,'countries','recents','blogs'));
+        return view('user_account', compact('user','books' ,'countries','recents','blogs','populars'));
     }
 
     public function blogAccount(User $user)

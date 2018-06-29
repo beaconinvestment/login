@@ -32,7 +32,7 @@
                         <div id="login" class="animate form">
                             <form action="<?php echo e(route('signin')); ?>" autocomplete="on" method="post" role="form" id="login_form">
                                 <h3 class="black_bg">
-                                    <img src="<?php echo e(asset('assets/img/logo.png')); ?>" alt="josh logo">
+                                    <img src="<?php echo e(asset('assets/img/logo1.png')); ?>" alt="josh logo">
                                     <br>Log In</h3>
                                     <!-- CSRF Token -->
                                     <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />

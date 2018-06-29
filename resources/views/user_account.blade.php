@@ -16,6 +16,8 @@
         {{--<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">--}}
         {{--    <link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>--}}
         {{--<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/user_account.css') }}">--}}
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/tabbular.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/blog.css') }}">
 
     @stop
     <style>
@@ -339,7 +341,8 @@
                                                 <!-- BEGIN FEATURED POST -->
                                                     <div class="featured-post-wide thumbnail">
                                                         @if($blog->image)
-                                                            <img src="{{ URL::to('/uploads/blog/'.$blog->image)  }}" style="border-radius: 30%; max-width: 200px" class="img-responsive" alt="Image">
+                                                            {{--<img src="{{ URL::to('/uploads/blog/'.$blog->image)  }}" class="img-responsive" alt="Image">--}}
+                                                            <img src="{{ URL::to('/uploads/blog/'.$blog->image)  }}" style="border-radius: 30%; max-width: 300px" class="img-responsive" alt="Image">
                                                         @endif
                                                         <div class="featured-text relative-left">
                                                             <h3 class="primary"><a href="{{ URL::to('blogitem/'.$blog->slug) }}">{{$blog->title}}</a></h3>
@@ -383,141 +386,90 @@
                                                 {{--</ul>--}}
                                             </div>
                                             <!-- /.col-md-8 -->
-                                            {{--<div class="col-md-4">--}}
-                                                {{--<!-- END POPULAR POST -->--}}
-                                                {{--<!-- Tabbable-Panel Start -->--}}
-                                                {{--<h3 class="martop">Recent Blogs</h3>--}}
-                                                {{--<div class="tabbable-panel">--}}
-                                                    {{--<!-- Tabbablw-line Start -->--}}
-                                                    {{--<div class="tabbable-line">--}}
-                                                        {{--<!-- Nav Nav-tabs Start -->--}}
-                                                        {{--<ul class="nav nav-tabs ">--}}
-                                                            {{--<li class="active">--}}
-                                                                {{--<a href="#tab_default_1" data-toggle="tab">--}}
-                                                                    {{--Popular Posts </a>--}}
-                                                            {{--</li>--}}
-                                                            {{--<li>--}}
-                                                                {{--<a href="#tab_default_2" data-toggle="tab">--}}
-                                                                    {{--Recent Posts </a>--}}
-                                                            {{--</li>--}}
-                                                        {{--</ul>--}}
-                                                        {{--<!-- //Nav Nav-tabs End -->--}}
-                                                        {{--<!-- Tab-content Start -->--}}
-                                                        {{--<div class="tab-content">--}}
-                                                            {{--<div class="tab-pane active" id="tab_default_1">--}}
-                                                                {{--<div class="media">--}}
-                                                                    {{--<div class="media-left media-middle tab col-sm-12 col-xs-12">--}}
-                                                                        {{--@foreach($populars as $popular)--}}
-                                                                            {{--<a href="{{ URL::to('blogitem/'.$popular->slug) }}">--}}
-                                                                                {{--<a href="#">--}}
-                                                                                    {{--@if($blog->image)--}}
-                                                                                        {{--<img src="{{ URL::to('/uploads/blog/'.$popular->image)  }}" class="img-responsive" alt="Image">--}}
-                                                                                    {{--@endif--}}
-                                                                                {{--</a>--}}
-                                                                            {{--</a>--}}
-                                                                    {{--</div>--}}
-                                                                {{--</div>--}}
-                                                                {{--<h4 class="text-primary">{!! $popular->title !!}</h4>--}}
-                                                                {{--<p>--}}
-                                                                    {{--{!! $popular->content !!}--}}
-                                                                {{--</p>--}}
-                                                                {{--<div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$popular->slug) }}">Read more</a>--}}
-                                                                {{--</div>--}}
-                                                                {{--@endforeach--}}
-                                                            {{--</div>--}}
-                                                            {{--<div class="tab-pane" id="tab_default_2">--}}
-                                                                {{--<div class="media">--}}
-                                                                    {{--<div class="media-left media-middle tab col-sm-12 col-xs-12">--}}
-                                                                        {{--@foreach($recents as $recent)--}}
-                                                                            {{--<a href="{{ URL::to('blogitem/'.$recent->slug) }}">--}}
-                                                                                {{--<a href="#">--}}
-                                                                                    {{--@if($blog->image)--}}
-                                                                                        {{--<img src="{{ URL::to('/uploads/blog/'.$recent->image)  }}" class="img-responsive" alt="Image">--}}
-                                                                                    {{--@endif--}}
-                                                                                {{--</a>--}}
-                                                                            {{--</a>--}}
-                                                                    {{--</div>--}}
-                                                                {{--</div>--}}
-                                                                {{--<h4 class="text-primary">{!! $recent->title !!}</h4>--}}
-                                                                {{--<p>--}}
-                                                                    {{--{!! $recent->content !!}--}}
-                                                                {{--</p>--}}
-                                                                {{--<div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$recent->slug) }}">Read more</a>--}}
-                                                                {{--</div>--}}
-                                                                {{--@endforeach--}}
-                                                            {{--</div>--}}
-                                                        {{--</div>--}}
-                                                        {{--<!-- //Tab-content End -->--}}
-                                                    {{--</div>--}}
-                                                    {{--<!-- //Tabbablw-line End -->--}}
-                                                {{--</div>--}}
-                                                {{--<!-- Tabbable_panel End -->--}}
-                                                {{--<div class="the-box recent">--}}
-                                                {{--<h3 class="small-heading text-center">Recent Comments</h3>--}}
-                                                {{--<ul class="media-list media-xs media-dotted">--}}
-                                                {{--<li class="media">--}}
-                                                {{--<a class="pull-left" href="#">--}}
-                                                {{--<img src="{{ asset('assets/images/authors/avatar.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">--}}
-                                                {{--</a>--}}
-                                                {{--<div class="media-body">--}}
-                                                {{--<h4 class="media-heading primary">--}}
-                                                {{--<a href="#">Elizabeth Owens at Duis autem vel eum iriure dolor in hendrerit in</a>--}}
-                                                {{--</h4>--}}
-                                                {{--<p class="date">--}}
-                                                {{--<small class="text-danger">2hours ago</small>--}}
-                                                {{--</p>--}}
-                                                {{--<p class="small">--}}
-                                                {{--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo--}}
-                                                {{--</p>--}}
-                                                {{--</div>--}}
-                                                {{--</li>--}}
-                                                {{--<hr>--}}
-                                                {{--<li class="media">--}}
-                                                {{--<a class="pull-left" href="#">--}}
-                                                {{--<img src="{{ asset('assets/images/authors/avatar1.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">--}}
-                                                {{--</a>--}}
-                                                {{--<div class="media-body">--}}
-                                                {{--<h4 class="media-heading primary">--}}
-                                                {{--<a href="#">Harold Chavez at Duis autem vel eum iriure dolor in hendrerit in</a>--}}
-                                                {{--</h4>--}}
-                                                {{--<p class="date">--}}
-                                                {{--<small class="text-danger">5hours ago</small>--}}
-                                                {{--</p>--}}
-                                                {{--<p class="small">--}}
-                                                {{--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo--}}
-                                                {{--</p>--}}
-                                                {{--</div>--}}
-                                                {{--</li>--}}
-                                                {{--<hr>--}}
-                                                {{--<li class="media">--}}
-                                                {{--<a class="pull-left" href="#">--}}
-                                                {{--<img src="{{ asset('assets/images/authors/avatar5.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">--}}
-                                                {{--</a>--}}
-                                                {{--<div class="media-body">--}}
-                                                {{--<h4 class="media-heading primary">--}}
-                                                {{--<a href="#">Mihaela Cihac at Duis autem vel eum iriure dolor in hendrerit in</a>--}}
-                                                {{--</h4>--}}
-                                                {{--<p class="date">--}}
-                                                {{--<small class="text-danger">10hours ago</small>--}}
-                                                {{--</p>--}}
-                                                {{--<p class="small">--}}
-                                                {{--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo--}}
-                                                {{--</p>--}}
-                                                {{--</div>--}}
-                                                {{--</li>--}}
-                                                {{--</ul>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="thumbnail">--}}
-                                                    {{--<h3>Tags</h3>--}}
-                                                    {{--<div class="primary text-center">--}}
-                                                        {{--@forelse($tags as $tag)--}}
-                                                            {{--<a href="{{ URL::to('blog/'.$tag.'/tag') }}">{{ $tag }}</a>,--}}
-                                                        {{--@empty--}}
-                                                            {{--No Tags--}}
-                                                        {{--@endforelse--}}
-                                                    {{--</div>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
+                                            <div class="col-md-4">
+                                                <!-- END POPULAR POST -->
+                                                <!-- Tabbable-Panel Start -->
+                                                <h3 class="martop">Tab Widget</h3>
+                                                <div class="tabbable-panel">
+                                                    <!-- Tabbablw-line Start -->
+                                                    <div class="tabbable-line">
+                                                        <!-- Nav Nav-tabs Start -->
+                                                        <ul class="nav nav-tabs ">
+                                                            <li class="active">
+                                                                <a href="#tab_default_1" data-toggle="tab">
+                                                                    Popular Posts </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#tab_default_2" data-toggle="tab">
+                                                                    Recent Posts </a>
+                                                            </li>
+                                                        </ul>
+                                                        <!-- //Nav Nav-tabs End -->
+                                                        <!-- Tab-content Start -->
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="tab_default_1">
+                                                                <div class="the-box">
+                                                                    <h3 class="small-heading text-center">Recent Posts</h3>
+                                                                    @foreach($populars as $popular)
+                                                                        <ul class="media-list media-xs media-dotted">
+                                                                            <li class="media">
+                                                                                <a class="pull-left" href="{{ URL::to('blogitem/'.$popular->slug) }}">
+                                                                                    <img src="{{ URL::to('/uploads/blog/'.$popular->image)  }}" class="img-circle img-responsive pull-left" alt="riot">
+                                                                                </a>
+                                                                                <div class="media-body">
+                                                                                    <h4 class="media-heading primary">
+                                                                                        <a href="{{ URL::to('blogitem/'.$popular->slug) }}">{!! $popular->title !!}</a>
+                                                                                    </h4>
+                                                                                    <p class="date">
+                                                                                        <small class="text-danger"><a href="{{ URL::to('blogitem/'.$popular->slug) }}"> {{$popular->created_at->diffForHumans()}}</small>
+                                                                                    </p>
+                                                                                    <p class="small">
+                                                                                        {{--{!! $recent->content !!}--}}
+                                                                                        {!!  substr(strip_tags($popular->content), 0, 150) !!}
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$popular->slug) }}">Read more</a></div>
+                                                                            </li>
+                                                                            <hr>
+                                                                        </ul>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane" id="tab_default_2">
+                                                                <div class="the-box">
+                                                                    <h3 class="small-heading text-center">Recent Posts</h3>
+                                                                    @foreach($recents as $recent)
+                                                                        <ul class="media-list media-xs media-dotted">
+                                                                            <li class="media">
+                                                                                <a class="pull-left" href="{{ URL::to('blogitem/'.$recent->slug) }}">
+                                                                                    <img src="{{ URL::to('/uploads/blog/'.$recent->image)  }}" class="img-circle img-responsive pull-left" alt="riot">
+                                                                                </a>
+                                                                                <div class="media-body">
+                                                                                    <h4 class="media-heading primary">
+                                                                                        <a href="{{ URL::to('blogitem/'.$recent->slug) }}">{!! $recent->title !!}</a>
+                                                                                    </h4>
+                                                                                    <p class="date">
+                                                                                        <small class="text-danger"><a href="{{ URL::to('blogitem/'.$recent->slug) }}"> {{$recent->created_at->diffForHumans()}}</small>
+                                                                                    </p>
+                                                                                    <p class="small">
+                                                                                        {{--{!! $recent->content !!}--}}
+                                                                                        {!!  substr(strip_tags($recent->content), 0, 150) !!}
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$recent->slug) }}">Read more</a></div>
+                                                                            </li>
+                                                                            <hr>
+                                                                        </ul>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- //Tab-content End -->
+                                                    </div>
+                                                    <!-- //Tabbablw-line End -->
+                                                </div>
+                                                <!-- Tabbable_panel End -->
+                                            </div>
                                             <!-- /.col-md-4 -->
                                         </div>
                                     </div>

@@ -47,7 +47,8 @@ Blog
                     <!-- BEGIN FEATURED POST -->
                     <div class="featured-post-wide thumbnail">
                         <?php if($blog->image): ?>
-                        <img src="<?php echo e(URL::to('/uploads/blog/'.$blog->image)); ?>" class="img-responsive" alt="Image">
+                        
+                            <img src="<?php echo e(URL::to('/uploads/blog/'.$blog->image)); ?>" style="border-radius: 30%; max-width: 300px" class="img-responsive" alt="Image">
                         <?php endif; ?>
                         <div class="featured-text relative-left">
                             <h3 class="primary"><a href="<?php echo e(URL::to('blogitem/'.$blog->slug)); ?>"><?php echo e($blog->title); ?></a></h3>
@@ -115,50 +116,106 @@ Blog
                             <!-- Tab-content Start -->
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_default_1">
-                                    <div class="media">
-                                        <div class="media-left media-middle tab col-sm-12 col-xs-12">
-                                            <?php $__currentLoopData = $populars; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $popular): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <a href="<?php echo e(URL::to('blogitem/'.$popular->slug)); ?>">
-                                                    <a href="#">
-                                                        <?php if($blog->image): ?>
-                                                            <img src="<?php echo e(URL::to('/uploads/blog/'.$popular->image)); ?>" class="img-responsive" alt="Image">
-                                                        <?php endif; ?>
+                                    <div class="the-box">
+                                        <h3 class="small-heading text-center">Recent Posts</h3>
+                                        <?php $__currentLoopData = $populars; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $popular): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <ul class="media-list media-xs media-dotted">
+                                                <li class="media">
+                                                    <a class="pull-left" href="<?php echo e(URL::to('blogitem/'.$popular->slug)); ?>">
+                                                        <img src="<?php echo e(URL::to('/uploads/blog/'.$popular->image)); ?>" class="img-circle img-responsive pull-left" alt="riot">
                                                     </a>
-                                                </a>
-                                        </div>
-                                    </div>
-                                    <h4 class="text-primary"><?php echo $popular->title; ?></h4>
-                                    <p>
-                                        
-                                        <?php echo substr(strip_tags($popular->content), 0, 150); ?>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading primary">
+                                                            <a href="<?php echo e(URL::to('blogitem/'.$popular->slug)); ?>"><?php echo $popular->title; ?></a>
+                                                        </h4>
+                                                        <p class="date">
+                                                            <small class="text-danger"><a href="<?php echo e(URL::to('blogitem/'.$popular->slug)); ?>"> <?php echo e($popular->created_at->diffForHumans()); ?></small>
+                                                        </p>
+                                                        <p class="small">
+                                                            
+                                                            <?php echo substr(strip_tags($popular->content), 0, 150); ?>
 
-                                    </p>
-                                    <div class="text-right primary marbtm"><a href="<?php echo e(URL::to('blogitem/'.$popular->slug)); ?>">Read more</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="text-right primary marbtm"><a href="<?php echo e(URL::to('blogitem/'.$popular->slug)); ?>">Read more</a></div>
+                                                </li>
+                                                <hr>
+                                            </ul>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        
+                                                            
+                                                        
+                                                    
+                                                
+                                        
+                                    
+                                    
+                                    
+                                        
+                                        
+                                    
+                                    
+                                    
+                                    
+                                        
+                                    
                                 </div>
                                 <div class="tab-pane" id="tab_default_2">
-                                    <div class="media">
-                                        <div class="media-left media-middle tab col-sm-12 col-xs-12">
-                                            <?php $__currentLoopData = $recents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <a href="<?php echo e(URL::to('blogitem/'.$recent->slug)); ?>">
-                                                    <a href="#">
-                                                        <?php if($blog->image): ?>
-                                                            <img src="<?php echo e(URL::to('/uploads/blog/'.$recent->image)); ?>" class="img-responsive" alt="Image">
-                                                        <?php endif; ?>
+                                    <div class="the-box">
+                                        <h3 class="small-heading text-center">Recent Posts</h3>
+                                        <?php $__currentLoopData = $recents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <ul class="media-list media-xs media-dotted">
+                                                <li class="media">
+                                                    <a class="pull-left" href="<?php echo e(URL::to('blogitem/'.$recent->slug)); ?>">
+                                                        <img src="<?php echo e(URL::to('/uploads/blog/'.$recent->image)); ?>" class="img-circle img-responsive pull-left" alt="riot">
                                                     </a>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <h4 class="text-primary"><?php echo $recent->title; ?></h4>
-                                    <p>
-                                        
-                                        <?php echo substr(strip_tags($recent->content), 0, 150); ?>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading primary">
+                                                            <a href="<?php echo e(URL::to('blogitem/'.$recent->slug)); ?>"><?php echo $recent->title; ?></a>
+                                                        </h4>
+                                                        <p class="date">
+                                                            <small class="text-danger"><a href="<?php echo e(URL::to('blogitem/'.$recent->slug)); ?>"> <?php echo e($recent->created_at->diffForHumans()); ?></small>
+                                                        </p>
+                                                        <p class="small">
+                                                            
+                                                            <?php echo substr(strip_tags($recent->content), 0, 150); ?>
 
-                                    </p>
-                                    <div class="text-right primary marbtm"><a href="<?php echo e(URL::to('blogitem/'.$recent->slug)); ?>">Read more</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="text-right primary marbtm"><a href="<?php echo e(URL::to('blogitem/'.$recent->slug)); ?>">Read more</a></div>
+                                                </li>
+                                                <hr>
+                                            </ul>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    
+                                        
+                                            
+                                            
+                                                    
+                                                        
+                                                            
+                                                        
+                                                    
+                                            
+                                        
+                                    
+                                    
+                                    
+                                        
+                                        
+                                    
+                                    
+                                    
+                                    
+                                        
+                                    
                                 </div>
                             </div>
                             <!-- //Tab-content End -->

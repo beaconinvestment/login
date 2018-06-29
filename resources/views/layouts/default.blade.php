@@ -129,9 +129,7 @@
                             {{--</li>--}}
                         {{--</ul>--}}
                     {{--</li>--}}
-                    {{--<li {!! (Request::is('news') || Request::is('news/*') ? 'class="active"' : '') !!}><a--}}
-                                {{--href="{{ URL::to('news') }}">News</a>--}}
-                    {{--</li>--}}
+
 
                     {{--<li {!! (Request::is('blog') || Request::is('blogitem/*') ? 'class="active"' : '') !!}><a href="{{ URL::to('blog') }}"> Blog</a>--}}
                     {{--</li>--}}
@@ -145,6 +143,9 @@
                         {{--<li><a href="{{ URL::to('http://blog.beaconinvestment.org/blog') }}">Blog</a>--}}
                         <li><a href="{{ URL::to('blog') }}">Blog</a>
                         </li>
+                        <li {!! (Request::is('news') || Request::is('news/*') ? 'class="active"' : '') !!}><a
+                                    href="{{ URL::to('news') }}">News</a>
+                        </li>
                     @else
                         <li {{ (Request::is('my-account') ? 'class=active' : '') }}><a href="{{ URL::to('my-account') }}">My Account</a>
                         </li>
@@ -152,6 +153,9 @@
                         </li>
                         {{--<li><a href="{{ URL::to('http://blog.beaconinvestment.org/blog') }}">Blog</a>--}}
                         <li><a href="{{ URL::to('blog') }}">Blog</a>
+                        </li>
+                        <li {!! (Request::is('news') || Request::is('news/*') ? 'class="active"' : '') !!}><a
+                                    href="{{ URL::to('news') }}">News</a>
                         </li>
                     @endif
                 </ul>

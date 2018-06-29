@@ -16,8 +16,9 @@ class NewsController extends Controller
         $lifestyle = News::where('category', 'lifestyle')->orderBy('id', 'desc')->take(6)->get();
         $world_carousel = News::where('category', 'world')->orderBy('id', 'desc')->take(8)->get();
         $world_news = News::where('category', 'world')->orderBy('id', 'desc')->take(4)->get();
+        $recentnews = News::orderBy('id', 'desc')->take(5)->get();
 
-        return view('news', compact('business', 'popular', 'hotnews', 'lifestyle', 'world_carousel', 'world_news', 'sports'));
+        return view('news', compact('business', 'popular', 'hotnews', 'lifestyle', 'world_carousel', 'world_news', 'sports','recentnews'));
 
     }
 

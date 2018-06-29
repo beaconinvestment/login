@@ -31,7 +31,7 @@
 <body class="skin-josh">
 <header class="header">
     <a href="<?php echo e(route('admin.dashboard')); ?>" class="logo">
-        <img src="<?php echo e(asset('assets/img/logo.png')); ?>" alt="logo">
+        <img src="<?php echo e(asset('assets/img/logo1.png')); ?>" alt="logo">
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->

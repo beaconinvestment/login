@@ -129,9 +129,7 @@
                             
                         
                     
-                    
-                                
-                    
+
 
                     
                     
@@ -152,6 +150,9 @@
                         </li>
                         
                         <li><a href="<?php echo e(URL::to('blog')); ?>">Blog</a>
+                        </li>
+                        <li <?php echo (Request::is('news') || Request::is('news/*') ? 'class="active"' : ''); ?>><a
+                                    href="<?php echo e(URL::to('news')); ?>">News</a>
                         </li>
                     <?php endif; ?>
                 </ul>

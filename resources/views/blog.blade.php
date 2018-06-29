@@ -50,7 +50,8 @@ Blog
                     <!-- BEGIN FEATURED POST -->
                     <div class="featured-post-wide thumbnail">
                         @if($blog->image)
-                        <img src="{{ URL::to('/uploads/blog/'.$blog->image)  }}" class="img-responsive" alt="Image">
+                        {{--<img src="{{ URL::to('/uploads/blog/'.$blog->image)  }}" class="img-responsive" alt="Image">--}}
+                            <img src="{{ URL::to('/uploads/blog/'.$blog->image)  }}" style="border-radius: 30%; max-width: 300px" class="img-responsive" alt="Image">
                         @endif
                         <div class="featured-text relative-left">
                             <h3 class="primary"><a href="{{ URL::to('blogitem/'.$blog->slug) }}">{{$blog->title}}</a></h3>
@@ -116,48 +117,104 @@ Blog
                             <!-- Tab-content Start -->
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_default_1">
-                                    <div class="media">
-                                        <div class="media-left media-middle tab col-sm-12 col-xs-12">
-                                            @foreach($populars as $popular)
-                                                <a href="{{ URL::to('blogitem/'.$popular->slug) }}">
-                                                    <a href="#">
-                                                        @if($blog->image)
-                                                            <img src="{{ URL::to('/uploads/blog/'.$popular->image)  }}" class="img-responsive" alt="Image">
-                                                        @endif
+                                    <div class="the-box">
+                                        <h3 class="small-heading text-center">Recent Posts</h3>
+                                        @foreach($populars as $popular)
+                                            <ul class="media-list media-xs media-dotted">
+                                                <li class="media">
+                                                    <a class="pull-left" href="{{ URL::to('blogitem/'.$popular->slug) }}">
+                                                        <img src="{{ URL::to('/uploads/blog/'.$popular->image)  }}" class="img-circle img-responsive pull-left" alt="riot">
                                                     </a>
-                                                </a>
-                                        </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading primary">
+                                                            <a href="{{ URL::to('blogitem/'.$popular->slug) }}">{!! $popular->title !!}</a>
+                                                        </h4>
+                                                        <p class="date">
+                                                            <small class="text-danger"><a href="{{ URL::to('blogitem/'.$popular->slug) }}"> {{$popular->created_at->diffForHumans()}}</small>
+                                                        </p>
+                                                        <p class="small">
+                                                            {{--{!! $recent->content !!}--}}
+                                                            {!!  substr(strip_tags($popular->content), 0, 150) !!}
+                                                        </p>
+                                                    </div>
+                                                    <div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$popular->slug) }}">Read more</a></div>
+                                                </li>
+                                                <hr>
+                                            </ul>
+                                        @endforeach
                                     </div>
-                                    <h4 class="text-primary">{!! $popular->title !!}</h4>
-                                    <p>
+                                    {{--<div class="media">--}}
+                                        {{--<div class="media-left media-middle tab col-sm-12 col-xs-12">--}}
+                                            {{--@forelse($populars as $popular)--}}
+                                                {{--<a href="{{ URL::to('blogitem/'.$popular->slug) }}">--}}
+                                                    {{--<a href="#">--}}
+                                                        {{--@if($popular->image)--}}
+                                                            {{--<img src="{{ URL::to('/uploads/blog/'.$popular->image)  }}" class="img-responsive" alt="Image">--}}
+                                                        {{--@endif--}}
+                                                    {{--</a>--}}
+                                                {{--</a>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<h4 class="text-primary">{!! $popular->title !!}</h4>--}}
+                                    {{--<p>--}}
                                         {{--{!! str_limit($popular->content) !!}--}}
-                                        {!!  substr(strip_tags($popular->content), 0, 150) !!}
-                                    </p>
-                                    <div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$popular->slug) }}">Read more</a>
-                                    </div>
-                                    @endforeach
+                                        {{--{!!  substr(strip_tags($popular->content), 0, 150) !!}--}}
+                                    {{--</p>--}}
+                                    {{--<div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$popular->slug) }}">Read more</a>--}}
+                                    {{--</div>--}}
+                                    {{--@empty--}}
+                                        {{--<h3>No Posts Exists!</h3>--}}
+                                    {{--@endforelse--}}
                                 </div>
                                 <div class="tab-pane" id="tab_default_2">
-                                    <div class="media">
-                                        <div class="media-left media-middle tab col-sm-12 col-xs-12">
-                                            @foreach($recents as $recent)
-                                            <a href="{{ URL::to('blogitem/'.$recent->slug) }}">
-                                                    <a href="#">
-                                                        @if($blog->image)
-                                                            <img src="{{ URL::to('/uploads/blog/'.$recent->image)  }}" class="img-responsive" alt="Image">
-                                                        @endif
+                                    <div class="the-box">
+                                        <h3 class="small-heading text-center">Recent Posts</h3>
+                                        @foreach($recents as $recent)
+                                            <ul class="media-list media-xs media-dotted">
+                                                <li class="media">
+                                                    <a class="pull-left" href="{{ URL::to('blogitem/'.$recent->slug) }}">
+                                                        <img src="{{ URL::to('/uploads/blog/'.$recent->image)  }}" class="img-circle img-responsive pull-left" alt="riot">
                                                     </a>
-                                            </a>
-                                        </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading primary">
+                                                            <a href="{{ URL::to('blogitem/'.$recent->slug) }}">{!! $recent->title !!}</a>
+                                                        </h4>
+                                                        <p class="date">
+                                                            <small class="text-danger"><a href="{{ URL::to('blogitem/'.$recent->slug) }}"> {{$recent->created_at->diffForHumans()}}</small>
+                                                        </p>
+                                                        <p class="small">
+                                                            {{--{!! $recent->content !!}--}}
+                                                            {!!  substr(strip_tags($recent->content), 0, 150) !!}
+                                                        </p>
+                                                    </div>
+                                                    <div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$recent->slug) }}">Read more</a></div>
+                                                </li>
+                                                <hr>
+                                            </ul>
+                                        @endforeach
                                     </div>
-                                    <h4 class="text-primary">{!! $recent->title !!}</h4>
-                                    <p>
+                                    {{--<div class="media">--}}
+                                        {{--<div class="media-left media-middle tab col-sm-12 col-xs-12">--}}
+                                            {{--@forelse($recents as $recent)--}}
+                                            {{--<a href="{{ URL::to('blogitem/'.$recent->slug) }}">--}}
+                                                    {{--<a href="#">--}}
+                                                        {{--@if($recent->image)--}}
+                                                            {{--<img src="{{ URL::to('/uploads/blog/'.$recent->image)  }}" class="img-responsive" alt="Image">--}}
+                                                        {{--@endif--}}
+                                                    {{--</a>--}}
+                                            {{--</a>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<h4 class="text-primary">{!! $recent->title !!}</h4>--}}
+                                    {{--<p>--}}
                                         {{--{!! $recent->content !!}--}}
-                                        {!!  substr(strip_tags($recent->content), 0, 150) !!}
-                                    </p>
-                                    <div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$recent->slug) }}">Read more</a>
-                                    </div>
-                                    @endforeach
+                                        {{--{!!  substr(strip_tags($recent->content), 0, 150) !!}--}}
+                                    {{--</p>--}}
+                                    {{--<div class="text-right primary marbtm"><a href="{{ URL::to('blogitem/'.$recent->slug) }}">Read more</a>--}}
+                                    {{--</div>--}}
+                                    {{--@empty--}}
+                                        {{--<h3>No Posts Exists!</h3>--}}
+                                    {{--@endforelse--}}
                                 </div>
                             </div>
                             <!-- //Tab-content End -->
