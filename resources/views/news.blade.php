@@ -376,7 +376,7 @@
                                 @forelse($popular as $populars)
                                     <div class="media">
                                         <div class="media-left">
-                                            <a href="#">
+                                            <a href="{{ route('news.show',$populars->id) }}">
                                                 {{--<img class="media-object" src="{{ asset('assets/images/image_15.jpg') }}" alt="image">--}}
                                                 <img class="media-object" src="{{ URL::to('/uploads/news/'.$populars->image)  }}"
                                                      alt="image">
@@ -423,7 +423,7 @@
                                 @forelse($recentnews as $recentnew)
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="#">
+                                        <a href="{{ route('news.show',$recentnew->id) }}">
                                             {{--<img class="media-object" src="{{ asset('assets/images/image_15.jpg') }}" alt="image">--}}
                                             <img class="media-object" src="{{ URL::to('/uploads/news/'.$recentnew->image)  }}"
                                                  alt="image">

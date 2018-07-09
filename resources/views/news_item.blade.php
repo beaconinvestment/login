@@ -115,7 +115,7 @@ News_Item
                             <li class="media">
                                 <div class="media-body">
                                     <div class="media-heading">
-                                        <a href="#"><h4 class="primary news_headings">{{ $item->title }}</h4></a>
+                                        <a href="{{ route('news.show',$item->id) }}"><h4 class="primary news_headings">{{ $item->title }}</h4></a>
                                         <h6 class="text-danger">{!! date('d-m-Y', strtotime($item->created_at)) !!}</h6>
                                     </div>
                                 </div>

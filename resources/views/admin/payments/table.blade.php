@@ -3,6 +3,7 @@
      <tr>
         <th>Booking Id</th>
         <th>Payment</th>
+        <th>Payment Date</th>
         <th >Action</th>
      </tr>
     </thead>
@@ -11,6 +12,7 @@
         <tr>
             <td>{!! $payment->booking_id !!}</td>
             <td>{!! $payment->payment !!}</td>
+            <td>{!! $payment->created_at !!}</td>
             <td>
                  <a href="{{ route('admin.payments.show', collect($payment)->first() ) }}">
                      <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view payment"></i>
@@ -51,7 +53,6 @@
                            $('.livicon').updateLivicon();
                      },500);
                   } );
-
        </script>
 
 @stop

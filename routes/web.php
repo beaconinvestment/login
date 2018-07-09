@@ -205,7 +205,8 @@ Route::get('register', 'FrontEndController@getRegister')->name('register');
 Route::post('register','FrontEndController@postRegister')->name('register');
 Route::get('activate/{userId}/{activationCode}','FrontEndController@getActivate')->name('activate');
 Route::get('forgot-password','FrontEndController@getForgotPassword')->name('forgot-password');
-Route::post('forgot-password', 'FrontEndController@postForgotPassword');
+//Route::post('forgot-password', 'FrontEndController@postForgotPassword');
+Route::post('forgot-password', 'FrontEndController@postForgotPW');
 
 #Social Logins
 Route::get('facebook', 'Admin\FacebookAuthController@redirectToProvider');

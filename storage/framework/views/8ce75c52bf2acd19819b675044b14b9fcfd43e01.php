@@ -373,7 +373,8 @@
                                 <?php $__empty_1 = true; $__currentLoopData = $popular; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $populars): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <div class="media">
                                         <div class="media-left">
-                                            <a href="#">
+                                            
+                                            <a href="<?php echo e(route('news.show',$populars->id)); ?>">
                                                 
                                                 <img class="media-object" src="<?php echo e(URL::to('/uploads/news/'.$populars->image)); ?>"
                                                      alt="image">
@@ -420,7 +421,7 @@
                                 <?php $__empty_1 = true; $__currentLoopData = $recentnews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recentnew): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="#">
+                                        <a href="<?php echo e(route('news.show',$recentnew->id)); ?>">
                                             
                                             <img class="media-object" src="<?php echo e(URL::to('/uploads/news/'.$recentnew->image)); ?>"
                                                  alt="image">

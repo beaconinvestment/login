@@ -13,7 +13,7 @@
     <![endif]-->
     <title>
     	@section('title')
-        | Welcome to Beacon Frontend
+        | Beacon Investment
         @show
     </title>
     <!--global css starts-->

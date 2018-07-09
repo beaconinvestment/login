@@ -13,7 +13,7 @@
     <![endif]-->
     <title>
     	<?php $__env->startSection('title'); ?>
-        | Welcome to Beacon Frontend
+        | Beacon Investment
         <?php echo $__env->yieldSection(); ?>
     </title>
     <!--global css starts-->
@@ -142,6 +142,9 @@
                         </li>
                         
                         <li><a href="<?php echo e(URL::to('blog')); ?>">Blog</a>
+                        </li>
+                        <li <?php echo (Request::is('news') || Request::is('news/*') ? 'class="active"' : ''); ?>><a
+                                    href="<?php echo e(URL::to('news')); ?>">News</a>
                         </li>
                     <?php else: ?>
                         <li <?php echo e((Request::is('my-account') ? 'class=active' : '')); ?>><a href="<?php echo e(URL::to('my-account')); ?>">My Account</a>

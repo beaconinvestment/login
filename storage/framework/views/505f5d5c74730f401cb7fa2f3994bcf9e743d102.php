@@ -21,7 +21,7 @@
         <div class="box animation flipInX">
             <img src="<?php echo e(asset('assets/images/josh-new.png')); ?>" alt="logo" class="img-responsive mar">
             <h3 class="text-primary">Forgot Password</h3>
-            <p>Enter your email to reset your password</p>
+            <p>Enter your CNIC to reset your password</p>
             <div id="notific">
             <?php echo $__env->make('notifications', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             </div>

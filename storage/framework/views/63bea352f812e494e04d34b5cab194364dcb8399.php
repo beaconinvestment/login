@@ -6,7 +6,7 @@
 
 <?php $__env->startSection('header_styles'); ?>
 
-    <link href="<?php echo e(asset('assets/vendors/select2/css/select2.min.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(asset('assets/vendors/select2/css/select2.min.css')); ?>" rel="stylesheet"/>
     
     <style>
         body{

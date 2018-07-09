@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Single Product| Welcome to Beacon Frontend
+Single Product| Beacon Investment
 @parent
 @stop
 

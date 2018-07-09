@@ -2,6 +2,14 @@
 Bookings
 ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
 <?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('header_styles'); ?>
+
+    <link href="<?php echo e(asset('assets/vendors/select2/css/select2.min.css')); ?>" rel="stylesheet"/>
+    
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
   <?php echo $__env->make('core-templates::common.errors', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <section class="content-header">
@@ -24,7 +32,22 @@ Bookings
                     Edit  Booking
                 </h4></div>
             <br />
-        <div class="panel-body">
+          <div class="panel-body">
+          <div class="form-group col-sm-12">
+              <label for="tag_list">User Name:</label>
+              <select id="tag_list" name="tag_list" class="form-control" width="100%">
+                  <option value=”” disabled selected>Choose User . . .</option>
+                  <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <option value="<?php echo e($key); ?>"><?php echo e($user->first_name); ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <?php echo e($user->last_name); ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <?php echo e($user->cell_no); ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <?php echo e($user->id); ?>
+
+                      </option>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              </select>
+          </div>
+        
         <?php echo Form::model($booking, ['route' => ['admin.bookings.update', collect($booking)->first() ], 'method' => 'patch']); ?>
 
 
@@ -32,6 +55,7 @@ Bookings
 
         <?php echo Form::close(); ?>
 
+        
         </div>
       </div>
     </div>
@@ -44,6 +68,12 @@ Bookings
                 $('input[type=submit]').attr('disabled', 'disabled');
                 return true;
             });
+        });
+    </script>
+    <script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/select2/js/select2.js')); ?>"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tag_list').select2();
         });
     </script>
 <?php $__env->stopSection(); ?>

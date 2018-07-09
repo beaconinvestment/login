@@ -4,7 +4,7 @@
     {{--<meta charset="utf-8">--}}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Forgot_password | Welcome to Beacon Frontend</title>
+    <title>Forgot_password | Beacon Investment</title>
     <!--global css starts-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>
@@ -21,7 +21,7 @@
         <div class="box animation flipInX">
             <img src="{{ asset('assets/images/josh-new.png') }}" alt="logo" class="img-responsive mar">
             <h3 class="text-primary">Forgot Password</h3>
-            <p>Enter your email to reset your password</p>
+            <p>Enter your CNIC to reset your password</p>
             <div id="notific">
             @include('notifications')
             </div>

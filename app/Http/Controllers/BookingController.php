@@ -13,6 +13,7 @@ use App\Models\Booking;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\User;
 
 class BookingController extends InfyOmBaseController
 {
@@ -46,7 +47,8 @@ class BookingController extends InfyOmBaseController
      */
     public function create()
     {
-        return view('admin.bookings.create');
+        $users = User::all();
+        return view('admin.bookings.create', compact('users'));
     }
 
     /**
@@ -103,8 +105,10 @@ class BookingController extends InfyOmBaseController
 
             return redirect(route('bookings.index'));
         }
+        $users = User::all();
 
-        return view('admin.bookings.edit')->with('booking', $booking);
+        return view('admin.bookings.edit',compact('booking','users'));
+//            ->with('booking', $booking);
     }
 
     /**

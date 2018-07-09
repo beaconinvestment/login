@@ -19,3 +19,10 @@
     <hr>
 </div>
 
+<!-- Payment Date -->
+<div class="form-group">
+    {!! Form::label('created_at', 'Payment Date:') !!}
+    <p>{!! $payment->created_at !!}</p>
+    <hr>
+</div>
+

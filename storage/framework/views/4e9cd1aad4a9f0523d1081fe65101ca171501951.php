@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>
         <?php $__env->startSection('title'); ?>
-            | Beacon Admin Template
+            | Beacon Admin Dashboard
         <?php echo $__env->yieldSection(); ?>
     </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>

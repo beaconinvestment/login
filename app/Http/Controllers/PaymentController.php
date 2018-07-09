@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Requests\CreatePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
+use App\Models\Booking;
 use App\Repositories\PaymentRepository;
 use App\Http\Controllers\AppBaseController as InfyOmBaseController;
 use Illuminate\Http\Request;
@@ -35,8 +36,9 @@ class PaymentController extends InfyOmBaseController
 
         $this->paymentRepository->pushCriteria(new RequestCriteria($request));
         $payments = $this->paymentRepository->all();
-        return view('admin.payments.index')
-            ->with('payments', $payments);
+
+        return view('admin.payments.index',compact('payments'));
+//            ->with('payments', $payments);
     }
 
     /**
@@ -46,7 +48,10 @@ class PaymentController extends InfyOmBaseController
      */
     public function create()
     {
-        return view('admin.payments.create');
+        $bookings = Booking::all();
+
+        return view('admin.payments.create',compact('bookings'));
+//        return view('admin.payments.create');
     }
 
     /**

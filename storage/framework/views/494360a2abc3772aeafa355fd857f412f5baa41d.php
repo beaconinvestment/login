@@ -4,20 +4,21 @@ Payments
 <?php $__env->stopSection(); ?>
 
 
-<?php $__env->startSection('content'); ?>
-<section class="content-header">
-    <h1>Payments</h1>
-    <ol class="breadcrumb">
-        <li>
-            <a href="<?php echo e(route('admin.dashboard')); ?>"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
-                Dashboard
-            </a>
-        </li>
-        <li>Payments</li>
-        <li class="active">Payments List</li>
-    </ol>
-</section>
 
+<?php $__env->startSection('content'); ?>
+
+    <section class="content-header">
+        <h1>Payments</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<?php echo e(route('admin.dashboard')); ?>"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>Payments</li>
+            <li class="active">Payments List</li>
+        </ol>
+    </section>
 <section class="content paddingleft_right15">
     <div class="row">
      <?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -33,11 +34,10 @@ Payments
             <br />
             <div class="panel-body table-responsive">
                  <?php echo $__env->make('admin.payments.table', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                 
+
             </div>
         </div>
  </div>
 </section>
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('admin/layouts/default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

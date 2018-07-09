@@ -90,7 +90,7 @@
                                                                     {{ csrf_field() }}
                                                                     <div class="form-group {{ $errors->first('pic', 'has-error') }}">
                                                                         <label class="col-md-2 control-label">Avatar:</label>
-                                                                        <div class="col-md-10">
+                                                                        <div class="col-md-7">
                                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                                 <div class="fileinput-new thumbnail" style="max-width: 200px; max-height: 200px;">
                                                                                     @if($user->pic)
@@ -124,6 +124,17 @@
                                                                             </div>
                                                                             <span class="help-block">{{ $errors->first('pic', ':message') }}</span>
                                                                         </div>
+                                                                        {{--<div class="col-md-3">--}}
+                                                                            {{--<label for="booking details">Booking Details</label>--}}
+                                                                            {{--<div class="col-md-12">--}}
+                                                                                {{--<label for="booking details">Total Bookings</label>--}}
+                                                                                {{--@foreach($books->booking as $index =>$book)--}}
+                                                                                    {{--<tr>--}}
+                                                                                        {{--<td>{{$book->count()}}</td>--}}
+                                                                                    {{--</tr>--}}
+                                                                                {{--@endforeach--}}
+                                                                            {{--</div>--}}
+                                                                        {{--</div>--}}
                                                                     </div>
                                                                     <div class="form-group {{ $errors->first('first_name', 'has-error') }}">
                                                                         <label class="col-lg-2 control-label">
